@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,12 +45,12 @@ public class TilePool : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         CreatePool(_poolSize);
     }
-        public void CreatePool(int num)
+
+    public void CreatePool(int num)
     {
         for (int i = 0; i < num; i++)
         {
@@ -72,8 +71,8 @@ public class TilePool : MonoBehaviour
 
     public void PutPoolObj(GameObject obj)
     {
-        pool.Enqueue(obj);
         obj.SetActive(false);
+        pool.Enqueue(obj);
     }
 
 
