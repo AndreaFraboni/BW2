@@ -59,7 +59,6 @@ public class TileSpawner : MonoBehaviour
         //}
         //tiles.Clear();
         //_nextSpawnZ = 0;
-
         //_player.position = _playerSartPos;
         //CreateInitialTiles();
     }
