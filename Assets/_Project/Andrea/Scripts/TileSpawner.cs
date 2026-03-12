@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Unity.VisualScripting;
 
 public class TileSpawner : MonoBehaviour
 {
@@ -14,7 +15,12 @@ public class TileSpawner : MonoBehaviour
 
     [SerializeField] private List<GameObject> tiles = new List<GameObject>();
 
+    [SerializeField] private GameObject _StartingTileGO;
+
     private Vector3 _playerSartPos;
+
+    private bool isStartingGame = true;
+
 
     [SerializeField] private CinemachineVirtualCamera _virtualcam;
 
@@ -51,6 +57,11 @@ public class TileSpawner : MonoBehaviour
         TilePool.Instance.PutPoolObj(tileToHide);
     }
 
+    public void DestroyStartingTile()
+    {
+        Destroy(_StartingTileGO);
+    }
+
     private void ResetRunningGame()
     {
         //foreach (GameObject tile in tiles)
@@ -65,7 +76,12 @@ public class TileSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_player.position.z > tiles[0].transform.position.z + (_tileLength))
+        if (_player.position.z > tiles[0].transform.position.z && isStartingGame)
+        {
+            DestroyStartingTile();
+            isStartingGame = false;
+        }
+        if (_player.position.z > tiles[0].transform.position.z + (_tileLength) && !isStartingGame)
         {
             HideBackTile();
             SpawnTile();
