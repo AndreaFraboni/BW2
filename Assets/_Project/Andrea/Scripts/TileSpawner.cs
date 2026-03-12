@@ -16,17 +16,20 @@ public class TileSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> tiles = new List<GameObject>();
 
     [SerializeField] private GameObject _StartingTileGO;
+    [SerializeField] private Vector3 _resetPos = new Vector3(0f, 1f, -16f);
+
 
     private Vector3 _playerSartPos;
+    private Quaternion _playerQuat;
 
     private bool isStartingGame = true;
-
 
     [SerializeField] private CinemachineVirtualCamera _virtualcam;
 
     private void Awake()
     {
         _playerSartPos = _player.position;
+        _playerQuat = _player.rotation;
         CreateInitialTiles();
     }
 
@@ -64,15 +67,26 @@ public class TileSpawner : MonoBehaviour
 
     private void ResetRunningGame()
     {
-        //foreach (GameObject tile in tiles)
-        //{
-        //    TilePool.Instance.PutPoolObj(tiles[tiles.Count - 1]);
-        //}
-        //tiles.Clear();
-        //_nextSpawnZ = 0;
-        //_player.position = _playerSartPos;
-        //CreateInitialTiles();
+        foreach (GameObject tile in tiles)
+        {
+            TilePool.Instance.PutPoolObj(tile);
+        }
+        tiles.Clear();
+        _nextSpawnZ = 0f;
+
+        Vector3 Pos = _resetPos;
+        //Vector3 Pos = new Vector3(0f, 1f, _playerSartPos.z + _tileLength * 0.5f);      
+        Vector3 displacement = Pos - _player.position;
+
+        _player.position = Pos;
+        _player.rotation = _playerQuat;
+
+        if (_virtualcam != null) _virtualcam.OnTargetObjectWarped(_player, displacement);
+        _virtualcam.PreviousStateIsValid = false;
+
+        CreateInitialTiles();
     }
+
 
     private void Update()
     {
@@ -90,7 +104,7 @@ public class TileSpawner : MonoBehaviour
         if (_player.position.z >= _limitMeters)
         {
             // Teleport Player to start position and restart tile
-            //ResetRunningGame();
+            ResetRunningGame();
         }
 
     }

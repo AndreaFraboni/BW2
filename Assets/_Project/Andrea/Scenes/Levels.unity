@@ -278,7 +278,7 @@ Transform:
   m_GameObject: {fileID: 280242033}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35826382, y: 0.00000011900491, z: -0.000000045666475, w: 0.9336204}
-  m_LocalPosition: {x: -0.0000018948962, y: 7.689648, z: -61.03294}
+  m_LocalPosition: {x: -0.0000018948946, y: 7.689651, z: -57.432938}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -579,7 +579,7 @@ Transform:
   m_GameObject: {fileID: 700816166}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3582638, y: 0.00000011900491, z: -0.00000004566647, w: 0.93362045}
-  m_LocalPosition: {x: -0.0000018948954, y: 7.689648, z: -61.03294}
+  m_LocalPosition: {x: 0, y: 7.689648, z: -57.43294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -627,6 +627,7 @@ MonoBehaviour:
   _limitMeters: 150
   tiles: []
   _StartingTileGO: {fileID: 700907385}
+  _resetPos: {x: 0, y: 1, z: -16}
   _virtualcam: {fileID: 700816167}
 --- !u!4 &826219225
 Transform:
@@ -866,7 +867,7 @@ Transform:
   m_GameObject: {fileID: 1266092032}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -53.6}
+  m_LocalPosition: {x: 0, y: 1, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1119,8 +1120,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 280242036}
   - {fileID: 1150182613}
-  - {fileID: 1266092036}
   - {fileID: 700816168}
+  - {fileID: 1266092036}
   - {fileID: 596976309}
   - {fileID: 826219225}
   - {fileID: 79590138}
