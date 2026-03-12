@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sci-Fi Sword
+* source:	https://sketchfab.com/3d-models/sci-fi-sword-f6735b2e339d48e68af3f365837ecceb
+* author:	LockyFarrell (https://sketchfab.com/lockyfarrell3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sci-Fi Sword" (https://sketchfab.com/3d-models/sci-fi-sword-f6735b2e339d48e68af3f365837ecceb) by LockyFarrell (https://sketchfab.com/lockyfarrell3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
