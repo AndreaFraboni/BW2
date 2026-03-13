@@ -3,7 +3,7 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     private Rigidbody _rb;
-    private PlayerController _pc;
+    private AndController _pc;
     private float _speed;
 
     private Vector3 currentDirection;
@@ -11,7 +11,7 @@ public class Mover : MonoBehaviour
     private void Awake()
     {
         if (_rb == null) _rb = GetComponentInParent<Rigidbody>();
-        if (_pc == null) _pc = GetComponentInParent<PlayerController>();
+        if (_pc == null) _pc = GetComponentInParent<AndController>();
     }
 
     private void FixedUpdate()

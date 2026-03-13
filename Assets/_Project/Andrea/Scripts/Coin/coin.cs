@@ -4,7 +4,7 @@ public class Coin : MonoBehaviour
 {
     [Header("COIN object 3D Parameters")]
     [SerializeField] private float _coinRotSpeed = 100f;
-    [SerializeField] private int _coinValue = 10;
+    //[SerializeField] private int _coinValue = 10;
 
     void Update()
     {

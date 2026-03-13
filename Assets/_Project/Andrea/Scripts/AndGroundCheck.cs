@@ -1,13 +1,13 @@
 using UnityEngine;
-public class GroundCheck : MonoBehaviour
+public class AndGroundCheck : MonoBehaviour
 {
     [SerializeField] private float _probeDistance = 0.1f;
     [SerializeField] private LayerMask _layerGroundMask;
-    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private AndController _playerController;
 
     private void Awake()
     {
-        if (_playerController == null) _playerController = GetComponentInParent<PlayerController>();
+        if (_playerController == null) _playerController = GetComponentInParent<AndController>();
         if (_layerGroundMask == 0) _layerGroundMask = LayerMask.GetMask("Ground");
     }
 

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
-public class PlayerController : MonoBehaviour
+public class AndController : MonoBehaviour
 {
     [Header("Player movement parameters")]
     [SerializeField] private float _speed = 6.0f;
