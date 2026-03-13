@@ -1,13 +1,9 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-public class LoadSaveData : MonoBehaviour
+public class IOManager : MonoBehaviour
 {
-    private string _saveFile = Application.persistentDataPath + "/GameData.sav";
+    private string _saveFile;
 
     [System.Serializable]
     public class PlayerData
@@ -27,19 +23,17 @@ public class LoadSaveData : MonoBehaviour
     }
     HighScore mHighScore = new HighScore();
 
+    private void Awake()
+    {
+        _saveFile = Path.Combine(Application.persistentDataPath, "GameData.sav");
+    }
+
     public void SaveDataFile()
     {
-        if (File.Exists(_saveFile))
-        {
-            Debug.LogWarning("IL FILE di salvataggio ESISTE GIà non posso sovrascrivere !!!");
-            return;
-        }
-        else
-        {
-            Debug.LogWarning("il FILE di salvataggio NON ESISTE e quindi lo creo !!!");
-            string jsonwritingText = JsonUtility.ToJson(mPlayerData);
-            File.WriteAllText(_saveFile, jsonwritingText);
-        }
+        Debug.LogWarning("Salvataggio !!!");
+        string jsonwritingText = JsonUtility.ToJson(mPlayerData);
+        File.WriteAllText(_saveFile, jsonwritingText);
+        Debug.Log("File di salvataggio scritto in: " + _saveFile);
     }
 
     public void LoadDataFile()
@@ -53,12 +47,12 @@ public class LoadSaveData : MonoBehaviour
         else
         {
             Debug.LogWarning("il FILE di salvataggio NON ESISTE e quindi lo creo con dati di default !!!");
-            
+
             mPlayerData.Name = "Player";
             mPlayerData.MasterVolume = 1.0f;
             mPlayerData.MusicVolume = 1.0f;
             mPlayerData.SFXVolume = 1.0f;
-            
+
             string jsonwritingText = JsonUtility.ToJson(mPlayerData);
             File.WriteAllText(_saveFile, jsonwritingText);
             return;
