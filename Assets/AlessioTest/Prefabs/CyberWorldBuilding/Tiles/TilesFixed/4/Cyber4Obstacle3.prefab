@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1930491069857231895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3216647468222465788}
+  m_Layer: 0
+  m_Name: Cyber4Obstacle3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3216647468222465788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930491069857231895}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 277.21, y: -0.492, z: 209.842}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 251906905757403009}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4422603925695154336
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3216647468222465788}
+    m_Modifications:
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.9100037
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.492
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.84199524
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391171479522456245, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_Name
+      value: Cyber4Obstacle3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391171479522456245, guid: 473d0b1fe5864b743b479bcf11c5673f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8184482275449541585, guid: 473d0b1fe5864b743b479bcf11c5673f, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 473d0b1fe5864b743b479bcf11c5673f, type: 3}
+--- !u!4 &251906905757403009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4476240658439180065, guid: 473d0b1fe5864b743b479bcf11c5673f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4422603925695154336}
+  m_PrefabAsset: {fileID: 0}

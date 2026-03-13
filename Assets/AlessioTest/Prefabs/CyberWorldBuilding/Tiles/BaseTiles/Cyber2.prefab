@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6992756438148461069}
-  - component: {fileID: 7947201023019870299}
   - component: {fileID: 4404974069048230009}
   m_Layer: 0
   m_Name: Cyber2
@@ -36,18 +35,6 @@ Transform:
   - {fileID: 6442459048684135578}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7947201023019870299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5633465450057481529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a1137c7b0912bb48bdf178408646f7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &4404974069048230009
 BoxCollider:
   m_ObjectHideFlags: 0

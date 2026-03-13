@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7343815696013925820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2408463775712789074}
+  m_Layer: 0
+  m_Name: Cyber2Obstacle2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2408463775712789074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343815696013925820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 186.8, y: -0.492, z: 71.635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6632716861964863160}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5785640654235522025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2408463775712789074}
+    m_Modifications:
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.9000092
+      objectReference: {fileID: 0}
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.492
+      objectReference: {fileID: 0}
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.8349991
+      objectReference: {fileID: 0}
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550103131696011877, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_Name
+      value: Cyber2Obstacle2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550103131696011877, guid: f44a98d153948204891c4a908270891a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 218422977153126151, guid: f44a98d153948204891c4a908270891a, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f44a98d153948204891c4a908270891a, type: 3}
+--- !u!4 &6632716861964863160 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 884567401141409105, guid: f44a98d153948204891c4a908270891a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5785640654235522025}
+  m_PrefabAsset: {fileID: 0}
