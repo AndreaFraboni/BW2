@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class HighScoreTable : MonoBehaviour
 {
@@ -27,7 +25,6 @@ public class HighScoreTable : MonoBehaviour
     private void Awake()
     {
         entryTemplate.gameObject.SetActive(false);
- 
         LoadSaveLeaderboard();
     }
 
