@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cyber Wheel
+* source:	https://sketchfab.com/3d-models/cyber-wheel-d4afdc7c8d8b42efb910dbe278f22d94
+* author:	Confused3D (https://sketchfab.com/Confused3D)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cyber Wheel" (https://sketchfab.com/3d-models/cyber-wheel-d4afdc7c8d8b42efb910dbe278f22d94) by Confused3D (https://sketchfab.com/Confused3D) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
