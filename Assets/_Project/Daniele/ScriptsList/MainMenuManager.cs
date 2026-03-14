@@ -13,8 +13,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button _creditsButton;
 
     [Header("Credits UI")]
-    [SerializeField] private GameObject _creditsPanel; // Parte disattivato
-    [SerializeField] private Button _backButton;
+    //[SerializeField] private GameObject _creditsPanel; // Parte disattivato
+    //[SerializeField] private Button _backButton;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip _backgroundMusic;
@@ -23,7 +23,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         _mainMenuPanel.SetActive(true);
-        _creditsPanel.SetActive(false);
+        //_creditsPanel.SetActive(false);
 
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlayMusic(_backgroundMusic);
@@ -34,7 +34,7 @@ public class MainMenuManager : MonoBehaviour
         _newGameButton.onClick.AddListener(StartNewGame);
         _exitButton.onClick.AddListener(ExitGame);
         _creditsButton.onClick.AddListener(OpenCredits);
-        _backButton.onClick.AddListener(CloseCredits);
+        //_backButton.onClick.AddListener(CloseCredits);
     }
 
     private void OnDisable()
@@ -42,32 +42,38 @@ public class MainMenuManager : MonoBehaviour
         _newGameButton.onClick.RemoveListener(StartNewGame);
         _exitButton.onClick.RemoveListener(ExitGame);
         _creditsButton.onClick.RemoveListener(OpenCredits);
-        _backButton.onClick.RemoveListener(CloseCredits);
+        //_backButton.onClick.RemoveListener(CloseCredits);
     }
 
-    private void StartNewGame()
+    public void StartNewGame()
     {
         AudioManager.Instance.PlaySFX(_clickSound);
         SceneManager.LoadScene(3);
     }
 
-    private void OpenCredits()
+    public void OpenCredits()
     {
         AudioManager.Instance.PlaySFX(_clickSound);
-        _mainMenuPanel.SetActive(false); // Nascondi menu
-        _creditsPanel.SetActive(true);  // Mostra crediti
+        //_mainMenuPanel.SetActive(false); // Nascondi menu
+        //_creditsPanel.SetActive(true);  // Mostra crediti
     }
 
-    private void CloseCredits()
+    public void CloseCredits()
     {
         AudioManager.Instance.PlaySFX(_clickSound);
-        _creditsPanel.SetActive(false); // Nascondi crediti
-        _mainMenuPanel.SetActive(true);  // Torna al menu
+        //_creditsPanel.SetActive(false); // Nascondi crediti
+        //_mainMenuPanel.SetActive(true);  // Torna al menu
     }
 
-    private void ExitGame()
+    public void ExitGame()
     {
-        Debug.Log("Simulazione di chiusura, manca la build!");
+        AudioManager.Instance.PlaySFX(_clickSound);
+        //Debug.Log("Simulazione di chiusura, manca la build!");
+        //Application.Quit();
+       #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+       #else
         Application.Quit();
+       #endif   
     }
 }
