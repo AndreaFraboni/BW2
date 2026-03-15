@@ -1,8 +1,7 @@
 using System.IO;
 using UnityEngine;
-using static IOManager;
 
-public class IOManager : MonoBehaviour
+public class IOManager : GenericSingleton<IOManager>
 {
     private string _saveFile;
 
@@ -16,7 +15,7 @@ public class IOManager : MonoBehaviour
     }
     PlayerData mPlayerData = new PlayerData();
 
-    private void Awake()
+    private void Start()
     {
         _saveFile = Path.Combine(Application.persistentDataPath, "GameData.sav");
     }
@@ -49,7 +48,7 @@ public class IOManager : MonoBehaviour
 
             if (string.IsNullOrWhiteSpace(jsonloadingtext))
             {
-                Debug.LogWarning("file di salavtaggio è file vuoto ????");
+                Debug.LogWarning("file di salvataggio è un file vuoto ????");
                 return;
             }
 
@@ -57,13 +56,14 @@ public class IOManager : MonoBehaviour
 
             if (mPlayerData == null)
             {
-                Debug.LogWarning("problema con il file di salvataggio : JSON non valido.");
+                Debug.LogWarning("problema con il file di salvataggio : JSON non valido !!!");
                 return;
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogWarning("il FILE di salvataggio NON ESISTE e quindi ne creo uno con dati di default !!!");
+            Debug.LogError("Errore nel caricamento dati per un errore : " + e.Message);
+            Debug.LogWarning("il FILE di salvataggio NON ESISTE e quindi ne creo uno con dei dati di default !!!");
             mPlayerData.Name = "Player";
             mPlayerData.MasterVolume = 1.0f;
             mPlayerData.MusicVolume = 1.0f;

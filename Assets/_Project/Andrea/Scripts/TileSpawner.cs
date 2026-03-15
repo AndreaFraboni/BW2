@@ -5,19 +5,21 @@ using Unity.VisualScripting;
 
 public class TileSpawner : MonoBehaviour
 {
-    private float _nextSpawnZ = 0f;
+    private float _nextSpawnZ = -31.8f;
 
     [SerializeField] private Transform _player;
 
     [SerializeField] private int _initialNumTiles = 4;
-    [SerializeField] private float _tileLength = 50f;
+    [SerializeField] private float _tileLength = 20f;
     [SerializeField] private float _limitMeters = 150f;
 
     [SerializeField] private List<GameObject> tiles = new List<GameObject>();
 
     [SerializeField] private GameObject _StartingTileGO;
-    [SerializeField] private Vector3 _resetPos = new Vector3(0f, 1f, -16f);
+    [SerializeField] private Vector3 _resetPos = new Vector3(0f, 1f, -50f);
 
+    [SerializeField] private GameObject _currentTile;
+    [SerializeField] private GameObject _startingTile;
 
     private Vector3 _playerSartPos;
     private Quaternion _playerQuat;
@@ -30,12 +32,12 @@ public class TileSpawner : MonoBehaviour
     {
         _playerSartPos = _player.position;
         _playerQuat = _player.rotation;
+
         CreateInitialTiles();
     }
 
     private void CreateInitialTiles()
     {
-        // Starting to spawn intial tiles
         for (int i = 0; i < _initialNumTiles; i++)
         {
             SpawnTile();
@@ -45,13 +47,15 @@ public class TileSpawner : MonoBehaviour
     public void SpawnTile()
     {
         GameObject tile = TilePool.Instance.GetPoolObj();
+
         tile.transform.position = new Vector3(0F, 0F, _nextSpawnZ);
         tile.transform.rotation = Quaternion.identity;
         tile.SetActive(true);
+
         tiles.Add(tile);
+
         _nextSpawnZ += _tileLength;
     }
-
 
     public void HideBackTile()
     {
@@ -62,40 +66,58 @@ public class TileSpawner : MonoBehaviour
 
     public void DestroyStartingTile()
     {
-        Destroy(_StartingTileGO);
+        if (_StartingTileGO != null)
+        {
+            _StartingTileGO.SetActive(false);
+        }
     }
 
     private void ResetRunningGame()
     {
-        foreach (GameObject tile in tiles)
-        {
-            TilePool.Instance.PutPoolObj(tile);
-        }
-        tiles.Clear();
-        _nextSpawnZ = 0f;
+        //_currentTile = tiles[0];
+        //_startingTile = _currentTile;
 
-        Vector3 Pos = _resetPos;
-        //Vector3 Pos = new Vector3(0f, 1f, _playerSartPos.z + _tileLength * 0.5f);      
-        Vector3 displacement = Pos - _player.position;
+        //for (int i = 1; i < tiles.Count; i++)
+        //{
+        //    TilePool.Instance.PutPoolObj(tiles[i]);
+        //}
 
-        _player.position = Pos;
-        _player.rotation = _playerQuat;
+        //tiles.Clear();
 
-        if (_virtualcam != null) _virtualcam.OnTargetObjectWarped(_player, displacement);
-        _virtualcam.PreviousStateIsValid = false;
+        //_startingTile.transform.position = new Vector3(0f, 0f, 0f);
+        //_startingTile.transform.rotation = Quaternion.identity;
+        //_startingTile.SetActive(true);
 
-        CreateInitialTiles();
+        //_nextSpawnZ = _tileLength;
+
+        //Vector3 pos = _resetPos;
+        //Vector3 displacement = pos - _player.position;
+
+        //_player.position = pos;
+        //_player.rotation = _playerQuat;
+
+        //if (_virtualcam != null)
+        //{
+        //    _virtualcam.OnTargetObjectWarped(_player, displacement);
+        //    _virtualcam.PreviousStateIsValid = false;
+        //}
+
+        //while (tiles.Count < _initialNumTiles)
+        //{
+        //    SpawnTile();
+        //}
+
+        //isStartingGame = true;
     }
-
 
     private void Update()
     {
-        if (_player.position.z > tiles[0].transform.position.z && isStartingGame)
+        if (_player.position.z > tiles[0].transform.position.z + (_tileLength * 0.5f) && isStartingGame)
         {
             DestroyStartingTile();
             isStartingGame = false;
         }
-        if (_player.position.z > tiles[0].transform.position.z + (_tileLength) && !isStartingGame)
+        if (_player.position.z > tiles[0].transform.position.z + (_tileLength * 2) && !isStartingGame)
         {
             HideBackTile();
             SpawnTile();
@@ -103,7 +125,6 @@ public class TileSpawner : MonoBehaviour
 
         if (_player.position.z >= _limitMeters)
         {
-            // Teleport Player to start position and restart tile
             ResetRunningGame();
         }
 

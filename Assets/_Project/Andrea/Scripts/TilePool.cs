@@ -5,7 +5,9 @@ public class TilePool : MonoBehaviour
 {
     public static TilePool _instance;
 
-    [SerializeField] private GameObject _prefabTile;
+    //[SerializeField] private GameObject _prefabTile;
+    [SerializeField] private GameObject[] tilePrefabs;
+
     [SerializeField] private int _poolSize;
 
     Queue<GameObject> pool = new Queue<GameObject>();
@@ -54,7 +56,8 @@ public class TilePool : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {
-            GameObject obj = Instantiate(_prefabTile, transform);
+            //GameObject obj = Instantiate(_prefabTile, transform);
+            GameObject obj = Instantiate(tilePrefabs[i], transform);
             obj.SetActive(false);
             pool.Enqueue(obj);
         }
@@ -74,6 +77,4 @@ public class TilePool : MonoBehaviour
         obj.SetActive(false);
         pool.Enqueue(obj);
     }
-
-
 }
