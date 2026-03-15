@@ -148,7 +148,7 @@ public class IOManager : GenericSingleton<IOManager>
             }
             else
             {
-                Debug.LogWarning("creo dei dati di default !!!");
+                Debug.LogWarning("carico i dati dal file alle strutture Audio !!!");
                 MasterVol = mAudioSettings.masterVolValue;
                 MusicVol = mAudioSettings.musicVolValue;
                 SFXVol = mAudioSettings.sfxVolValue;
