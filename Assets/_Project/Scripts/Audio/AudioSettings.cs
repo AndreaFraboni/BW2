@@ -20,9 +20,6 @@ public class AudioSettings : MonoBehaviour
 
     private void OnEnable()
     {
-        //AudioManager.Instance.SetSliderValue(_masterSlider, "Master");
-        //AudioManager.Instance.SetSliderValue(_musicSlider, "Music");
-        //AudioManager.Instance.SetSliderValue(_sfxSlider, "SFX");
         LoadAudioSettings();
     }
 
@@ -41,21 +38,19 @@ public class AudioSettings : MonoBehaviour
         AudioManager.Instance.SetVolume(value, "SFX");
     }
 
-
-    //**************************************************************************************************//
     public void LoadAudioSettings()
     {
-        string saveFile = Application.persistentDataPath + "/audiosettings.json";
+        float masterVolume = 1f;
+        float musicVolume = 1f;
+        float sfxVolume = 1f;
 
-        if (File.Exists(saveFile))
+        bool result = IOManager.Instance.LoadAudioSettings(ref masterVolume, ref musicVolume, ref sfxVolume);
+
+        if (result)
         {
-            Debug.Log("FILE EXISTS !!!");
-            string AudioData = File.ReadAllText(saveFile);
-            var mAudioSettings = JsonUtility.FromJson<AudioSetData>(AudioData);
-
-            SetMasterVolume(mAudioSettings.masterVolValue);
-            SetMusicVolume(mAudioSettings.musicVolValue);
-            SetSFXVolume(mAudioSettings.sfxVolValue);
+            SetMasterVolume(masterVolume);
+            SetMusicVolume(musicVolume);
+            SetSFXVolume(sfxVolume);
 
             AudioManager.Instance.SetSliderValue(_masterSlider, "Master");
             AudioManager.Instance.SetSliderValue(_musicSlider, "Music");
@@ -63,22 +58,29 @@ public class AudioSettings : MonoBehaviour
         }
         else
         {
-            Debug.Log("FILE Audio Settings DOES NOT EXISTS !!!");
+            Debug.Log("ERROR AUDIO SETTINGS NOT LOADED then I create new file now with current value !!!");
+            SaveAudioSettings();
+            AudioManager.Instance.SetSliderValue(_masterSlider, "Master");
+            AudioManager.Instance.SetSliderValue(_musicSlider, "Music");
+            AudioManager.Instance.SetSliderValue(_sfxSlider, "SFX");
         }
     }
 
     public void SaveAudioSettings()
     {
-        AudioSetData mAudioSettings = new AudioSetData
-        {
-            masterVolValue = _masterSlider.value,
-            musicVolValue = _musicSlider.value,
-            sfxVolValue = _sfxSlider.value
-        };
+        float masterVolValue = _masterSlider.value;
+        float musicVolValue = _musicSlider.value;
+        float sfxVolValue = _sfxSlider.value;
 
-        string saveFile = Application.persistentDataPath + "/audiosettings.json";
-        string json = JsonUtility.ToJson(mAudioSettings);
-        File.WriteAllText(saveFile, json);
+        bool result = IOManager.Instance.SaveAudioSettings(masterVolValue, musicVolValue, sfxVolValue);
+        if (result)
+        {
+            Debug.Log("AUDIO SETTINGS SAVED !!!");
+        }
+        else
+        {
+            Debug.Log("ERROR AUDIO SETTINGS NOT SAVED !!!");
+        }
     }
 }
 
