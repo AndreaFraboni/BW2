@@ -16,23 +16,29 @@ public class TileSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> tiles = new List<GameObject>();
 
     [SerializeField] private GameObject _StartingTileGO;
-    [SerializeField] private Vector3 _resetPos = new Vector3(0f, 1f, -50f);
-
-    [SerializeField] private GameObject _startingTile;
     [SerializeField] private GameObject _currentTile;
 
     [SerializeField] private Vector3 _currentPosOnTile;
 
-    private Vector3 _playerSartPos;
+    private Vector3 _playerStartPos;
     private Quaternion _playerQuat;
 
-    private bool isStartingGame = true;
+    [SerializeField] private bool _finalSequenceStarted = false;
+    [SerializeField] private bool _finalSequenceSpawned = false;
+
+    [SerializeField] private int _maxBiomaCycles = 3;
+    [SerializeField] private int _currentNumBiomaCycle = 0;
 
     [SerializeField] private CinemachineVirtualCamera _virtualcam;
 
+    [SerializeField] private GameObject _finalTilePrefab;
+    [SerializeField] private int _numLastTileabeforeFinalTile = 2;
+
+    private GameObject _spawnedFinalTile;
+
     private void Awake()
     {
-        _playerSartPos = _player.position;
+        _playerStartPos = _player.position;
         _playerQuat = _player.rotation;
     }
 
@@ -58,28 +64,48 @@ public class TileSpawner : MonoBehaviour
         tile.SetActive(true);
 
         tiles.Add(tile);
+        _nextSpawnZ += _tileLength;
+    }
+
+    private void SpawnFinalTile()
+    {
+        if (_finalTilePrefab == null) return;
+
+        _spawnedFinalTile = Instantiate(_finalTilePrefab, new Vector3(0f, 0f, _nextSpawnZ), Quaternion.identity);
+
+        tiles.Add(_spawnedFinalTile);
 
         _nextSpawnZ += _tileLength;
     }
 
-    public void HideBackTile()
+    private void SpawnFinalSequence()
     {
-        GameObject tileToHide = tiles[0];
-        tiles.RemoveAt(0); // RIMUOVO TILE
-        TilePool.Instance.PutPoolObj(tileToHide); // E LO RIMETTO NEL POOL
+        if (_finalSequenceSpawned) return;
+
+        for (int i = 0; i < _numLastTileabeforeFinalTile; i++)
+        {
+            SpawnTile();
+        }
+
+        SpawnFinalTile();
+        _finalSequenceSpawned = true;
     }
 
-    public void DestroyStartingTile()
+    public void HideBackTile()
     {
-        //if (_StartingTileGO != null)
-        //{
-        //    _StartingTileGO.SetActive(false); // NON DISTRUGGO IL TILE MA LO NASCONDO
-        //}
+        if (tiles.Count == 0) return;
+
+        GameObject tileToHide = tiles[0];
+        tiles.RemoveAt(0);
+
+        if (tileToHide == _spawnedFinalTile) return;
+
+        TilePool.Instance.PutPoolObj(tileToHide);
     }
 
     private int GetCurrentTileIndex()
     {
-        float playerZ = _player.position.z; // POSIZIONE ATTUALE DEL PLAYER
+        float playerZ = _player.position.z;
 
         for (int i = tiles.Count - 1; i >= 0; i--)
         {
@@ -97,22 +123,22 @@ public class TileSpawner : MonoBehaviour
 
         int currentTileIndex = GetCurrentTileIndex();
         _currentTile = tiles[currentTileIndex];
-        Debug.Log($"CURRENT TILE INDEX : {_currentTile}");
 
-        _currentPosOnTile = _player.position - _currentTile.transform.position; // MI SERVE PER EVITARE DI NOTARE LO STACCO DOPO IL TELEPORT
+        _currentPosOnTile = _player.position - _currentTile.transform.position;
 
         float startZ = 0f;
         if (_StartingTileGO != null)
         {
-            startZ = _StartingTileGO.transform.position.z + _tileLength; // nuova posizione del tile dal punto appena dopo lo start tile
+            startZ = _StartingTileGO.transform.position.z + _tileLength;
         }
 
         Vector3 currentPlayerPos = _player.position;
 
-        tiles.RemoveAt(currentTileIndex); // RIMUOVO il tile DALLA LISTA dove si trova ora  il player
-        tiles.Insert(0, _currentTile);    // E PERò lo rimetto nella lista ma all'inizio della lista
+        tiles.RemoveAt(currentTileIndex);
+        tiles.Insert(0, _currentTile);
+
         float z = startZ;
-        for (int i = 0; i < tiles.Count; i++) // RISPAWNO ANCHE GLI ALTRI CHE ERO IN SEQUENZA DOPO IL TILE CORRENTE PER NON AVERE LO STACCO
+        for (int i = 0; i < tiles.Count; i++)
         {
             tiles[i].transform.position = new Vector3(0f, 0f, z);
             tiles[i].transform.rotation = Quaternion.identity;
@@ -130,27 +156,35 @@ public class TileSpawner : MonoBehaviour
             _virtualcam.PreviousStateIsValid = false;
         }
 
-        _nextSpawnZ = tiles[tiles.Count - 1].transform.position.z + _tileLength;
+        _currentNumBiomaCycle++;
+        
+        _nextSpawnZ = tiles[tiles.Count - 1].transform.position.z + _tileLength; // next Z will be last tile spawned position.z + tile lenght
+        
+        if (_currentNumBiomaCycle >= _maxBiomaCycles)
+        {
+            _finalSequenceStarted = true;
+            SpawnFinalSequence(); // avvio spawn ultima serie di tile e come ultimo tile il final tile del bioma
+        }
     }
 
     private void Update()
     {
-        if (_player.position.z > tiles[0].transform.position.z + (_tileLength * 0.5f) && isStartingGame)
-        {
-            DestroyStartingTile();
-            isStartingGame = false;
-        }
-        if (_player.position.z > tiles[0].transform.position.z + (_tileLength * 2) && !isStartingGame)
+        if (tiles.Count > 0 && _player.position.z > tiles[0].transform.position.z + (_tileLength * 2))
         {
             HideBackTile();
-            SpawnTile();
+
+            if (!_finalSequenceStarted)
+            {
+                SpawnTile();
+            }
         }
 
         if (_player.position.z >= _limitMeters)
         {
-            ResetRunningGame();
+            if (!_finalSequenceStarted)
+            {
+                ResetRunningGame();
+            }
         }
-
     }
-
 }

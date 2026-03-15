@@ -26,12 +26,12 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _gc = GetComponentInChildren<GroundCheck>();
+        _currentLane = CurrentLane.MIDLANE;
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && _gc.IsGrounded)
-            Jump();
+        if (Input.GetButtonDown("Jump") && _gc.IsGrounded) Jump();
 
         if (transform.position.x < 0)
         {

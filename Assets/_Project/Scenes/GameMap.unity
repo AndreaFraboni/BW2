@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 492669438}
   - component: {fileID: 492669439}
   m_Layer: 0
-  m_Name: GamplayPlayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -988,11 +988,16 @@ MonoBehaviour:
   _limitMeters: 150
   tiles: []
   _StartingTileGO: {fileID: 982187173}
-  _resetPos: {x: 0, y: 1, z: -50}
-  _startingTile: {fileID: 0}
   _currentTile: {fileID: 0}
   _currentPosOnTile: {x: 0, y: 0, z: 0}
+  _finalSequenceStarted: 0
+  _finalSequenceSpawned: 0
+  _maxBiomaCycles: 3
+  _currentNumBiomaCycle: 0
   _virtualcam: {fileID: 1627623645}
+  _finalTilePrefab: {fileID: 5945701984813583255, guid: 64175c423987e1b4885a2848acf9e3bb,
+    type: 3}
+  _normalTilesBeforeFinal: 2
 --- !u!4 &720337586
 Transform:
   m_ObjectHideFlags: 0
