@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class MainMenuManager : MonoBehaviour
         AudioManager.Instance.PlaySFX(_clickSound);
     }
 
-
+    public void StartGame()
+    {
+        AudioManager.Instance.StopAllAudioSource();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void QuitGame()
     {
         {

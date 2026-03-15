@@ -47,6 +47,12 @@ public class AudioManager : MonoBehaviour
         _musicSource?.Stop();
     }
 
+    public void StopAllAudioSource()
+    {
+        if (_musicSource.isPlaying) _musicSource.Stop();
+        if (_SFXSource.isPlaying) _SFXSource.Stop();
+    }
+
     public void SetSliderValue(Slider slider, string group)
     {
         if (_mixer.GetFloat(group, out float decibel))
