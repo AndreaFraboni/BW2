@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenuManagerDani : MonoBehaviour
 {
     [Header("Main Menu UI")]
     [SerializeField] private GameObject _mainMenuPanel; // Pannello principale con i 3 bottonizzzzzz
