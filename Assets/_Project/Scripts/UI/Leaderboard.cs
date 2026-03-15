@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
-public class HighScoreTable : MonoBehaviour
+public class Leaderboard : MonoBehaviour
 {
     [System.Serializable]
     private class HighscoreEntry

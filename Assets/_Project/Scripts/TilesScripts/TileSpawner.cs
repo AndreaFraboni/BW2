@@ -34,7 +34,10 @@ public class TileSpawner : MonoBehaviour
     {
         _playerSartPos = _player.position;
         _playerQuat = _player.rotation;
+    }
 
+    private void Start()
+    {
         CreateInitialTiles();
     }
 
@@ -68,10 +71,10 @@ public class TileSpawner : MonoBehaviour
 
     public void DestroyStartingTile()
     {
-        if (_StartingTileGO != null)
-        {
-            _StartingTileGO.SetActive(false); // NON DISTRUGGO IL TILE MA LO NASCONDO
-        }
+        //if (_StartingTileGO != null)
+        //{
+        //    _StartingTileGO.SetActive(false); // NON DISTRUGGO IL TILE MA LO NASCONDO
+        //}
     }
 
     private int GetCurrentTileIndex()
