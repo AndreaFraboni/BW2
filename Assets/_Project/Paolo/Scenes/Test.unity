@@ -278,6 +278,7 @@ MonoBehaviour:
   _jumpForce: 7
   _dashForce: 20
   _dashDuration: 0.2
+  _currentLane: 2
 --- !u!65 &774196932
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool _isDashing = false;
     private float _dashTime = 0f;
     private float _direction;
-    private CurrentLane _currentLane;
+    [SerializeField] private CurrentLane _currentLane;
     private int _cyberScore;
     private int _naturalScore;
     private int _blackWhiteScore;
