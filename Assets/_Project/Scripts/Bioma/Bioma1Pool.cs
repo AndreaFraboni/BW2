@@ -6,7 +6,7 @@ public class Bioma1Pool : MonoBehaviour
     public static Bioma1Pool Instance { get; private set; }
 
     [SerializeField] private GameObject[] tilePrefabs;
-    [SerializeField] private int poolSize = 10;
+    [SerializeField] private int poolSize = 20;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
 

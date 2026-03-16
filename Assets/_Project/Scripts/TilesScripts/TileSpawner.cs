@@ -4,14 +4,18 @@ using Cinemachine;
 using Unity.VisualScripting;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using UnityEditor.ShaderGraph.Internal;
 
 public class TileSpawner : MonoBehaviour
 {
+    public static TileSpawner Instance { get; private set; }
+
     private float _nextSpawnZ = -31.8f;
+    private float _startOffset = 5.0f;
 
     [SerializeField] private Transform _player;
 
-    [SerializeField] private int _initialNumTiles = 4;
+    [SerializeField] private int _initialNumTiles = 5;
     [SerializeField] private float _tileLength = 20f;
     [SerializeField] private float _limitMeters = 150f;
 
@@ -44,6 +48,15 @@ public class TileSpawner : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         _playerStartPos = _player.position;
         _playerQuat = _player.rotation;
     }
@@ -215,6 +228,14 @@ public class TileSpawner : MonoBehaviour
         }
     }
 
+    private void TeleportPlayerToStart()
+    {
+        //float posZ = tiles[0].transform.position.z + _startOffset;
+        //Vector3 newPlayerPos = new Vector3()
+        //_player.position = newPlayerPos;
+        //_player.rotation = _playerQuat;
+    }
+
     private void Update()
     {
         if (tiles.Count > 0 && _player.position.z > tiles[0].transform.position.z + (_tileLength * 2))
@@ -235,4 +256,13 @@ public class TileSpawner : MonoBehaviour
             }
         }
     }
+
+    public void ChangeBioma()
+    {
+        _currentBioma = _currentBioma + 1;
+
+        CreateInitialTiles();    
+    
+    }
+
 }

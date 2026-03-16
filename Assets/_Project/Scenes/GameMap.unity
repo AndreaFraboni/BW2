@@ -229,12 +229,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 1061465026521610599, guid: a0be09ffe0e59204ca17120745655127, type: 3}
-  - {fileID: 2672748288293935591, guid: 02414089ceed403479257287168ae245, type: 3}
-  - {fileID: 1274992663610696940, guid: 2f1578ca7ce36e440a5af915212cd753, type: 3}
-  - {fileID: 7200825555324253113, guid: 67a8fe1456646cf4ab7dd4707cfac317, type: 3}
-  - {fileID: 8987453997657307172, guid: be5836efefcf7254e80e910cc513bc92, type: 3}
-  poolSize: 10
+  - {fileID: 526260849867832560, guid: afb15ec900dfe3b43bffaccfe7d0a1bc, type: 3}
+  - {fileID: 2180656106249793200, guid: c478e7aa59a92b2489c420b1bcfcc0de, type: 3}
+  - {fileID: 7873334441667476749, guid: 220f34713bfabf8479544179e05be09b, type: 3}
+  - {fileID: 2048450662940553615, guid: ea1910094366633499ce773bd6a905c5, type: 3}
+  - {fileID: 7343815696013925820, guid: d20e502a5ae5030439f4fbc97b234161, type: 3}
+  - {fileID: 224968801452519295, guid: a525fedaae303bc41939d70ace279848, type: 3}
+  - {fileID: 1124491961980834227, guid: f249afc0c4a42cf44b69f38bf4f4cdbe, type: 3}
+  - {fileID: 5142660688174836482, guid: 8107b905fd403c24ea7cd8d560e70f3e, type: 3}
+  - {fileID: 2424857148553814844, guid: 117f24c8c48049a4da7f107b41637315, type: 3}
+  - {fileID: 4295382720797421998, guid: 723dc34cc4eed40488c12d8ca84ccc95, type: 3}
+  - {fileID: 8617485599547128776, guid: a8f67f8c127f0e84399c0abc409438b2, type: 3}
+  - {fileID: 1930491069857231895, guid: aa39ecf9520269e42954dcf1c6266e04, type: 3}
+  - {fileID: 8196553018898439387, guid: f231abbb2977fc147a1eca370fdbfe50, type: 3}
+  - {fileID: 84221205434994838, guid: f5bc58f0df072184e93cb74901fd4f71, type: 3}
+  - {fileID: 805231974680214604, guid: 87b5bfe3a20e84e4fb176d20ae10ee8e, type: 3}
+  poolSize: 20
   finalTilePrefab: {fileID: 5945701984813583255, guid: 64175c423987e1b4885a2848acf9e3bb,
     type: 3}
 --- !u!1 &212753513
@@ -767,7 +777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &515140687
 Transform:
   m_ObjectHideFlags: 0
@@ -795,9 +805,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3a1fd93b067854e82d638959b023a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePrefabs: []
-  poolSize: 10
-  finalTilePrefab: {fileID: 0}
+  tilePrefabs:
+  - {fileID: 6588116800237929861, guid: dc9faea4615c4bc409065882845275ca, type: 3}
+  - {fileID: 2586464039659360899, guid: 42db4699c9337fa46ad79a5d94885a1e, type: 3}
+  - {fileID: 9082185346953579363, guid: a6ab3c52580352c488e8af768b22aafb, type: 3}
+  - {fileID: 8513339760771123346, guid: f91b5091fa95a9547a80eee83d6790d9, type: 3}
+  - {fileID: 3903632705330753371, guid: 2d02113c475843f408b9cf5ce579d408, type: 3}
+  - {fileID: 5879039924739479576, guid: 6f985745595e7384b87df57f38992900, type: 3}
+  - {fileID: 1111578207236794327, guid: 70dff5e1b9ac16a4c8124705094e9acd, type: 3}
+  - {fileID: 1473248711909977476, guid: f770b291fb62e954baecf6a8f69092af, type: 3}
+  - {fileID: 7796317549056036506, guid: e0631bb849c0bff428b52ba007136bf2, type: 3}
+  - {fileID: 265144459763273426, guid: e8cd2a1695a21cd45b8a937e756a2337, type: 3}
+  - {fileID: 9202434660354931010, guid: 5f4ecf6ceb1de2e4b85166b2f1cfac55, type: 3}
+  - {fileID: 5146234520750829729, guid: dd047f44de77d064682f3ea3bbd6262d, type: 3}
+  - {fileID: 8477850191209301455, guid: f1e66297fdd952d45b168fc40ce3d92e, type: 3}
+  - {fileID: 4945672428388300979, guid: 90874d6b37362fc4da3107ccc180af8d, type: 3}
+  - {fileID: 8289192438160010028, guid: f4f0070684a7b2641b834bed5281a157, type: 3}
+  poolSize: 20
+  finalTilePrefab: {fileID: 5572540296871944769, guid: 8196a41230f4087409c9cfcc8c4d7d02,
+    type: 3}
 --- !u!1 &516747321
 GameObject:
   m_ObjectHideFlags: 0
