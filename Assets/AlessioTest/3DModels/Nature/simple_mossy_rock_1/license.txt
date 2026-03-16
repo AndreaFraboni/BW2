@@ -1,0 +1,11 @@
+Model Information:
+* title:	Simple Mossy Rock 1
+* source:	https://sketchfab.com/3d-models/simple-mossy-rock-1-402ec7e86a834f6eb4ac74867b71732d
+* author:	PABSTon3DO (https://sketchfab.com/PABSTon3DO)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Simple Mossy Rock 1" (https://sketchfab.com/3d-models/simple-mossy-rock-1-402ec7e86a834f6eb4ac74867b71732d) by PABSTon3DO (https://sketchfab.com/PABSTon3DO) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

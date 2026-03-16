@@ -1,0 +1,11 @@
+Model Information:
+* title:	Black to White
+* source:	https://sketchfab.com/3d-models/black-to-white-4b415203ff0344b7841fd4e7174f0b20
+* author:	SuperScriptDEV (https://sketchfab.com/supersciptdev)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Black to White" (https://sketchfab.com/3d-models/black-to-white-4b415203ff0344b7841fd4e7174f0b20) by SuperScriptDEV (https://sketchfab.com/supersciptdev) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
