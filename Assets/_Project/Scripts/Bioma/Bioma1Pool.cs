@@ -37,6 +37,14 @@ public class Bioma1Pool : MonoBehaviour
         }
     }
 
+    public void HideAllPoolObject()
+    {
+        foreach (GameObject obj in pool)
+        {
+            if (obj != null) obj.SetActive(false);
+        }
+    }
+
     public GameObject GetPoolObj()
     {
         if (pool.Count == 0)
@@ -50,4 +58,7 @@ public class Bioma1Pool : MonoBehaviour
         obj.SetActive(false);
         pool.Enqueue(obj);
     }
+
+
+
 }

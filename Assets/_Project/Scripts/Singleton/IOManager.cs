@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerData
 {
     public string Name;
-    public int Score;
+    public int Time;
 }
 
 [System.Serializable]
@@ -73,12 +73,12 @@ public class IOManager : GenericSingleton<IOManager>
         return true;
     }
 
-    public bool SavePlayerDataFile(string PlayerName, int Score)
+    public bool SavePlayerDataFile(string PlayerName, int Time)
     {
         PlayerData mPlayerData = new PlayerData();
 
         mPlayerData.Name = PlayerName;
-        mPlayerData.Score = Score;
+        mPlayerData.Time = Time;
 
         try
         {

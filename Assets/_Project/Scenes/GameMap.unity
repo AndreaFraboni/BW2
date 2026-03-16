@@ -368,6 +368,85 @@ Transform:
   - {fileID: 957297401}
   m_Father: {fileID: 1446303959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &240739796
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641898481103541505, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_Name
+      value: Bioma2StartTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641898481103541505, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa1e7c9da00e043409b2e5842d4bd654, type: 3}
+--- !u!1 &240739797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5641898481103541505, guid: aa1e7c9da00e043409b2e5842d4bd654,
+    type: 3}
+  m_PrefabInstance: {fileID: 240739796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,7 +1239,9 @@ MonoBehaviour:
   _tileLength: 43.2
   _limitMeters: 150
   tiles: []
-  _StartingTileGO: {fileID: 982187173}
+  _Bioma1StartTile: {fileID: 982187173}
+  _Bioma2StartTile: {fileID: 240739797}
+  _Bioma3StartTile: {fileID: 785161669}
   _currentTile: {fileID: 0}
   _currentPosOnTile: {x: 0, y: 0, z: 0}
   _finalSequenceStarted: 0
@@ -1187,6 +1268,85 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &785161668
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194275198175209629, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641898481103541505, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_Name
+      value: Bioma3StartTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641898481103541505, guid: aa1e7c9da00e043409b2e5842d4bd654,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa1e7c9da00e043409b2e5842d4bd654, type: 3}
+--- !u!1 &785161669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5641898481103541505, guid: aa1e7c9da00e043409b2e5842d4bd654,
+    type: 3}
+  m_PrefabInstance: {fileID: 785161668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,7 +1638,7 @@ PrefabInstance:
     - target: {fileID: 1026933712462442530, guid: 15fe6c34764318f408383ec1aca606b4,
         type: 3}
       propertyPath: m_Name
-      value: StartTile
+      value: Bioma1StartTile
       objectReference: {fileID: 0}
     - target: {fileID: 7369600695493656721, guid: 15fe6c34764318f408383ec1aca606b4,
         type: 3}
@@ -3936,7 +4096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23956165, y: 0.22959027}
   m_AnchorMax: {x: 0.7594212, y: 0.33666593}
-  m_AnchoredPosition: {x: 0.5, y: -1.5000305}
+  m_AnchoredPosition: {x: 0.5, y: -1.5}
   m_SizeDelta: {x: -5, y: -7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1339218803162758676
@@ -9902,6 +10062,8 @@ SceneRoots:
   - {fileID: 1072769020}
   - {fileID: 78966523}
   - {fileID: 1032483915}
+  - {fileID: 240739796}
+  - {fileID: 785161668}
   - {fileID: 1254640208}
   - {fileID: 1483759200}
   - {fileID: 1446303959}

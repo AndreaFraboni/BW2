@@ -21,7 +21,9 @@ public class TileSpawner : MonoBehaviour
 
     [SerializeField] private List<GameObject> tiles = new List<GameObject>();
 
-    [SerializeField] private GameObject _StartingTileGO;
+    [SerializeField] private GameObject _Bioma1StartTile;
+    [SerializeField] private GameObject _Bioma2StartTile;
+    [SerializeField] private GameObject _Bioma3StartTile;
     [SerializeField] private GameObject _currentTile;
 
     [SerializeField] private Vector3 _currentPosOnTile;
@@ -156,7 +158,7 @@ public class TileSpawner : MonoBehaviour
                 Bioma2Pool.Instance.PutPoolObj(tileToHide);
                 break;
 
-            case3:
+            case 3:
                 Bioma3Pool.Instance.PutPoolObj(tileToHide);
                 break;
         }
@@ -186,9 +188,9 @@ public class TileSpawner : MonoBehaviour
         _currentPosOnTile = _player.position - _currentTile.transform.position;
 
         float startZ = 0f;
-        if (_StartingTileGO != null)
+        if (_Bioma1StartTile != null)
         {
-            startZ = _StartingTileGO.transform.position.z + _tileLength;
+            startZ = _Bioma1StartTile.transform.position.z + _tileLength;
         }
 
         Vector3 currentPlayerPos = _player.position;
@@ -230,10 +232,11 @@ public class TileSpawner : MonoBehaviour
 
     private void TeleportPlayerToStart()
     {
-        //float posZ = tiles[0].transform.position.z + _startOffset;
-        //Vector3 newPlayerPos = new Vector3()
-        //_player.position = newPlayerPos;
-        //_player.rotation = _playerQuat;
+        float posZ = tiles[0].transform.position.z + _startOffset;
+
+        Vector3 newPlayerPos = new Vector3(0, 0, posZ);
+        _player.position = newPlayerPos;
+        _player.rotation = _playerQuat;
     }
 
     private void Update()
@@ -259,10 +262,59 @@ public class TileSpawner : MonoBehaviour
 
     public void ChangeBioma()
     {
-        _currentBioma = _currentBioma + 1;
+        foreach (GameObject tile in tiles)
+        {
+            if (tile == _spawnedFinalTile) continue;
 
-        CreateInitialTiles();    
-    
+            switch (_currentBioma)
+            {
+                case 1:
+                    Bioma1Pool.Instance.PutPoolObj(tile);
+                    _Bioma1StartTile.SetActive(false);
+                    break;
+
+                case 2:
+                    Bioma2Pool.Instance.PutPoolObj(tile);
+                    _Bioma2StartTile.SetActive(false);
+                    break;
+
+                case 3:
+                    Bioma3Pool.Instance.PutPoolObj(tile);
+                    _Bioma3StartTile.SetActive(false);
+                    break;
+            }
+        }
+
+        tiles.Clear();
+
+        if (_spawnedFinalTile != null)
+        {
+            Destroy(_spawnedFinalTile);
+        }
+
+        _TilesCycleCounter = 0;
+        _finalSequenceStarted = false;
+        _finalSequenceSpawned = false;
+
+        _currentBioma++;
+
+        switch (_currentBioma)
+        {
+            case 1:
+                _Bioma1StartTile.SetActive(true);
+                break;
+
+            case 2:
+                _Bioma2StartTile.SetActive(true);
+                break;
+
+            case 3:
+                _Bioma3StartTile.SetActive(true);
+                break;
+        }
+
+        CreateInitialTiles();
+        TeleportPlayerToStart();
     }
 
 }
