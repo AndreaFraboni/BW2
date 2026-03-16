@@ -133,8 +133,8 @@ GameObject:
   - component: {fileID: 314563908}
   - component: {fileID: 314563907}
   - component: {fileID: 314563906}
-  - component: {fileID: 314563905}
   - component: {fileID: 314563904}
+  - component: {fileID: 314563909}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -154,27 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c622e6ed0d3a5f6498d5420327a2ea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &314563905
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314563903}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  _coin: 1
 --- !u!23 &314563906
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -234,12 +214,33 @@ Transform:
   m_GameObject: {fileID: 314563903}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1563895, y: 2.2994764, z: -13.551879}
+  m_LocalPosition: {x: -0.16, y: 2.2994764, z: -4.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &314563909
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314563903}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &774196930
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,8 +509,8 @@ GameObject:
   - component: {fileID: 1219039052}
   - component: {fileID: 1219039051}
   - component: {fileID: 1219039050}
-  - component: {fileID: 1219039049}
   - component: {fileID: 1219039048}
+  - component: {fileID: 1219039053}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -529,27 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c622e6ed0d3a5f6498d5420327a2ea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1219039049
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1219039047}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  _coin: 2
 --- !u!23 &1219039050
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -609,12 +590,33 @@ Transform:
   m_GameObject: {fileID: 1219039047}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1563895, y: 2.2994764, z: -13.551879}
+  m_LocalPosition: {x: -0.19, y: 2.2994764, z: -13.551879}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1219039053
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219039047}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1349921952
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,8 +795,8 @@ GameObject:
   - component: {fileID: 1986335923}
   - component: {fileID: 1986335922}
   - component: {fileID: 1986335921}
-  - component: {fileID: 1986335920}
   - component: {fileID: 1986335919}
+  - component: {fileID: 1986335924}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -814,27 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c622e6ed0d3a5f6498d5420327a2ea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1986335920
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986335918}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  _coin: 0
 --- !u!23 &1986335921
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -894,12 +876,33 @@ Transform:
   m_GameObject: {fileID: 1986335918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1563895, y: 2.2994764, z: -13.551879}
+  m_LocalPosition: {x: -0.1563895, y: 2.2994764, z: -9.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1986335924
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986335918}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2107728191
 GameObject:
   m_ObjectHideFlags: 0
