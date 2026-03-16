@@ -1,0 +1,11 @@
+Model Information:
+* title:	House Sketch
+* source:	https://sketchfab.com/3d-models/house-sketch-4623a16c935b411e851fd23f4cf31267
+* author:	Wesai (https://sketchfab.com/Wesai)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "House Sketch" (https://sketchfab.com/3d-models/house-sketch-4623a16c935b411e851fd23f4cf31267) by Wesai (https://sketchfab.com/Wesai) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
