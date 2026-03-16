@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using Unity.VisualScripting;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 
 public class TileSpawner : MonoBehaviour
 {
@@ -27,7 +29,9 @@ public class TileSpawner : MonoBehaviour
     [SerializeField] private bool _finalSequenceSpawned = false;
 
     [SerializeField] private int _maxBiomaCycles = 3;
-    [SerializeField] private int _currentNumBiomaCycle = 0;
+    [SerializeField] private int _TilesCycleCounter = 0;
+
+    [SerializeField] private int _currentBioma = 1;
 
     [SerializeField] private CinemachineVirtualCamera _virtualcam;
 
@@ -35,6 +39,8 @@ public class TileSpawner : MonoBehaviour
     [SerializeField] private int _numLastTileabeforeFinalTile = 2;
 
     private GameObject _spawnedFinalTile;
+
+    private GameObject _tile = null;
 
     private void Awake()
     {
@@ -57,13 +63,25 @@ public class TileSpawner : MonoBehaviour
 
     public void SpawnTile()
     {
-        GameObject tile = TilePool.Instance.GetPoolObj();
+        switch (_currentBioma)
+        {
+            case 1:
+                _tile = Bioma1Pool.Instance.GetPoolObj();
+                break;
 
-        tile.transform.position = new Vector3(0f, 0f, _nextSpawnZ);
-        tile.transform.rotation = Quaternion.identity;
-        tile.SetActive(true);
+            case 2:
+                _tile = Bioma2Pool.Instance.GetPoolObj();
+                break;
 
-        tiles.Add(tile);
+            case 3:
+                _tile = Bioma3Pool.Instance.GetPoolObj();
+                break;
+        }
+        
+        _tile.transform.position = new Vector3(0f, 0f, _nextSpawnZ);
+        _tile.transform.rotation = Quaternion.identity;
+        _tile.SetActive(true);
+        tiles.Add(_tile);
         _nextSpawnZ += _tileLength;
     }
 
@@ -71,7 +89,21 @@ public class TileSpawner : MonoBehaviour
     {
         if (_finalTilePrefab == null) return;
 
-        _spawnedFinalTile = Instantiate(_finalTilePrefab, new Vector3(0f, 0f, _nextSpawnZ), Quaternion.identity);
+       // _spawnedFinalTile = Instantiate(_finalTilePrefab, new Vector3(0f, 0f, _nextSpawnZ), Quaternion.identity);
+        switch (_currentBioma)
+        {
+            case 1:
+                _spawnedFinalTile = Instantiate(Bioma1Pool.Instance.finalTilePrefab, new Vector3(0f, 0f, _nextSpawnZ), Quaternion.identity);
+                break;
+
+            case 2:
+                _spawnedFinalTile = Instantiate(Bioma2Pool.Instance.finalTilePrefab, new Vector3(0f, 0f, _nextSpawnZ), Quaternion.identity);
+                break;
+
+            case 3:
+                _spawnedFinalTile = Instantiate(Bioma3Pool.Instance.finalTilePrefab, new Vector3(0f, 0f, _nextSpawnZ), Quaternion.identity);
+                break;
+        }     
 
         tiles.Add(_spawnedFinalTile);
 
@@ -100,7 +132,21 @@ public class TileSpawner : MonoBehaviour
 
         if (tileToHide == _spawnedFinalTile) return;
 
-        TilePool.Instance.PutPoolObj(tileToHide);
+        //TilePool.Instance.PutPoolObj(tileToHide);
+        switch (_currentBioma)
+        {
+            case 1:
+                Bioma1Pool.Instance.PutPoolObj(tileToHide);
+                break;
+
+            case 2:
+                Bioma2Pool.Instance.PutPoolObj(tileToHide);
+                break;
+
+            case3:
+                Bioma3Pool.Instance.PutPoolObj(tileToHide);
+                break;
+        }
     }
 
     private int GetCurrentTileIndex()
@@ -145,10 +191,12 @@ public class TileSpawner : MonoBehaviour
             z += _tileLength;
         }
 
+        // riposiziona il player all'inizio sopra il tile corrente e posizionato dove si trovava sul tile
         Vector3 newPlayerPos = _currentTile.transform.position + _currentPosOnTile;
         _player.position = newPlayerPos;
         _player.rotation = _playerQuat;
 
+        // riposiziona la telecamera 
         Vector3 displacement = newPlayerPos - currentPlayerPos;
         if (_virtualcam != null)
         {
@@ -156,14 +204,14 @@ public class TileSpawner : MonoBehaviour
             _virtualcam.PreviousStateIsValid = false;
         }
 
-        _currentNumBiomaCycle++;
+        _TilesCycleCounter++;
         
         _nextSpawnZ = tiles[tiles.Count - 1].transform.position.z + _tileLength; // next Z will be last tile spawned position.z + tile lenght
         
-        if (_currentNumBiomaCycle >= _maxBiomaCycles)
+        if (_TilesCycleCounter >= _maxBiomaCycles)
         {
             _finalSequenceStarted = true;
-            SpawnFinalSequence(); // avvio spawn ultima serie di tile e come ultimo tile il final tile del bioma
+            SpawnFinalSequence(); // avvio spawn ultima serie di tile del bioma e come ultimo tile mettiamo il finaltile del bioma
         }
     }
 

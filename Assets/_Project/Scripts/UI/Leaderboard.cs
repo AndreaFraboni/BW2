@@ -9,7 +9,7 @@ public class Leaderboard : MonoBehaviour
     [System.Serializable]
     private class HighscoreEntry
     {
-        public int score;
+        public int time;
         public string name;
     }
     private class Highscores
@@ -44,20 +44,20 @@ public class Leaderboard : MonoBehaviour
         Highscores highscores = new Highscores();
         highscores.highscoreEntryList = new List<HighscoreEntry>()
         {
-            new HighscoreEntry { score = 5000, name = "Andrea" },
-            new HighscoreEntry { score = 4900, name = "Marco" },
-            new HighscoreEntry { score = 3000, name = "Luca" },
-            new HighscoreEntry { score = 2500, name = "Giulia" },
-            new HighscoreEntry { score = 2000, name = "Sara" },
-            new HighscoreEntry { score = 2700, name = "Paolo" },
-            new HighscoreEntry { score = 2400, name = "Anna" },
-            new HighscoreEntry { score = 2100, name = "Franco" },
-            new HighscoreEntry { score = 1800, name = "Elena" },
-            new HighscoreEntry { score = 1500, name = "Michele" },
-            new HighscoreEntry { score = 1000, name = "Tizio" },
-            new HighscoreEntry { score = 800, name = "Caio" },
-            new HighscoreEntry { score = 1800, name = "Sempronio" },
-            new HighscoreEntry { score = 1800, name = "Giovannino" }
+            new HighscoreEntry { time = 500, name = "Andrea" },
+            new HighscoreEntry { time = 300, name = "Marco" },
+            new HighscoreEntry { time = 100, name = "Luca" },
+            new HighscoreEntry { time = 50, name = "Giulia" },
+            new HighscoreEntry { time = 20, name = "Sara" },
+            new HighscoreEntry { time = 200, name = "Paolo" },
+            new HighscoreEntry { time = 150, name = "Anna" },
+            new HighscoreEntry { time = 120, name = "Franco" },
+            new HighscoreEntry { time = 100, name = "Elena" },
+            new HighscoreEntry { time = 1000, name = "Michele" },
+            new HighscoreEntry { time = 800, name = "Tizio" },
+            new HighscoreEntry { time = 80, name = "Caio" },
+            new HighscoreEntry { time = 10, name = "Sempronio" },
+            new HighscoreEntry { time = 100, name = "Giovannino" }
         };
 
         SaveHighscoresToFile(highscores);        
@@ -97,7 +97,7 @@ public class Leaderboard : MonoBehaviour
         }
     }
 
-    public void AddHighscoreEntry(int score, string playerName)
+    public void AddHighscoreEntry(int time, string playerName)
     {
         Highscores highscores = LoadHighscoresFromFile();
 
@@ -108,7 +108,7 @@ public class Leaderboard : MonoBehaviour
 
         HighscoreEntry newEntry = new HighscoreEntry
         {
-            score = score,
+            time = time,
             name = playerName
         };
 
@@ -118,7 +118,7 @@ public class Leaderboard : MonoBehaviour
         SaveHighscoresToFile(highscores);
         LoadSaveLeaderboard();
 
-        Debug.Log("Nuovo punteggio aggiunto: " + playerName + " - " + score);
+        Debug.Log("Nuovo punteggio aggiunto: " + playerName + " - " + time);
     }
 
     private Highscores LoadHighscoresFromFile()
@@ -175,7 +175,7 @@ public class Leaderboard : MonoBehaviour
         Highscores highscores = new Highscores();
         highscores.highscoreEntryList = new List<HighscoreEntry>()
         {
-            new HighscoreEntry { score = 0, name = "Player" }
+            new HighscoreEntry { time = 0, name = "Player" }
         };
         return highscores;
     }
@@ -188,7 +188,7 @@ public class Leaderboard : MonoBehaviour
             {
                 if (list[j] != null && list[i] != null)
                 {
-                    if (list[j].score > list[i].score)
+                    if (list[j].time > list[i].time)
                     {
                         HighscoreEntry temp = list[i];
                         list[i] = list[j];
@@ -210,24 +210,24 @@ public class Leaderboard : MonoBehaviour
         entryTransform.gameObject.SetActive(true);
         
         Transform pos = entryTransform.Find("background/posText");
-        Transform score = entryTransform.Find("background/scoreText");
+        Transform time = entryTransform.Find("background/timeText");
         Transform name = entryTransform.Find("background/nameText");
         Transform background = entryTransform.Find("background");
 
         TMP_Text posText = pos.GetComponent<TMP_Text>();
-        TMP_Text scoreText = score.GetComponent<TMP_Text>();
+        TMP_Text timeText = time.GetComponent<TMP_Text>();
         TMP_Text nameText = name.GetComponent<TMP_Text>();
 
         int rank = transformList.Count + 1;
         posText.text = rank + ".";
 
-        scoreText.text = highscoreEntry.score.ToString();
+        timeText.text = highscoreEntry.time.ToString();
         nameText.text = highscoreEntry.name;
 
         if (rank == 1) // il numero uno ha il testo in verde ....
         {
             posText.color = Color.green;
-            scoreText.color = Color.green;
+            timeText.color = Color.green;
             nameText.color = Color.green;
         }
 
