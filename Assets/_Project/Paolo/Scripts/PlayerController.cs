@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rb;
     private GroundCheck _gc;
+
     private int _cyberScore;
     private int _naturalScore;
     private int _blackWhiteScore;

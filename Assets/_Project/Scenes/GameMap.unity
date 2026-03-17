@@ -257,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 212753514}
   - component: {fileID: 212753515}
+  - component: {fileID: 212753516}
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -286,9 +287,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212753513}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4517260c078b8fb43b1023cdaaae8177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundDistance: 0.5
+  _ground:
+    serializedVersion: 2
+    m_Bits: 64
+  IsGrounded: 0
+--- !u!114 &212753516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212753513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95cf82377af461d40aea852a15400a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _groundDistance: 0.5
@@ -746,9 +764,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 492669436}
-  - component: {fileID: 492669437}
   - component: {fileID: 492669438}
   - component: {fileID: 492669439}
+  - component: {fileID: 492669440}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -773,23 +791,6 @@ Transform:
   - {fileID: 212753514}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &492669437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492669435}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4370ef46336d87f439cad50e9e91fa94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 10
-  _jumpForce: 20
-  _addGravity: 0
-  _dashForce: 20
-  _dashDuration: 0.3
 --- !u!54 &492669438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -840,6 +841,23 @@ CapsuleCollider:
   m_Height: 3.9729285
   m_Direction: 1
   m_Center: {x: -0.02950883, y: 1.9901884, z: 0}
+--- !u!114 &492669440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492669435}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e780174beea94f9438b8a226a1cd5ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  _jumpForce: 20
+  _currentLane: 2
+  _laneOffset: 5
+  _laneChangeSpeed: 15
 --- !u!1 &515140686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8626956d060198c4a8007e16e220ec6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerControllerFix: {fileID: 492669437}
+  _playerController: {fileID: 492669440}
   _playerAnimatorLayerSwitch: {fileID: 1289112751}
   _enemyAnimatorLayerSwitch: {fileID: 1943790826}
   _playerTransform: {fileID: 1212546041}
