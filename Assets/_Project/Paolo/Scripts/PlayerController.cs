@@ -6,18 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     public enum CurrentLane { LEFTLANE, RIGHTLANE, MIDLANE }
 
+    [Header("Player Settings")]
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _jumpForce;
-    //[SerializeField] private float _addGravity;
-    [SerializeField] private float _dashForce = 10f;
-    [SerializeField] private float _dashDuration = 0.2f;
+    [SerializeField] private CurrentLane _currentLane;
+
+    [Header("Lane Settings")]
+    [SerializeField] private float _laneOffset = 5f;
+    [SerializeField] private float _laneChangeSpeed = 15f;
 
     private Rigidbody _rb;
     private GroundCheck _gc;
-    private bool _isDashing = false;
-    private float _dashTime = 0f;
-    private float _direction;
-    [SerializeField] private CurrentLane _currentLane;
     private int _cyberScore;
     private int _naturalScore;
     private int _blackWhiteScore;
@@ -31,58 +30,57 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && _gc.IsGrounded) Jump();
+        if (Input.GetButtonDown("Jump") && _gc.IsGrounded)
+            Jump();
 
-        if (transform.position.x < 0)
+
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            _currentLane = CurrentLane.LEFTLANE;
-        }
-        else if (transform.position.x > 0)
-        {
-            _currentLane = CurrentLane.RIGHTLANE;
-        }
-        else if (transform.position.x == 0)
-        {
-            _currentLane = CurrentLane.MIDLANE;
+            if (_currentLane == CurrentLane.MIDLANE)
+                _currentLane = CurrentLane.LEFTLANE;
+            else if (_currentLane == CurrentLane.RIGHTLANE)
+                _currentLane = CurrentLane.MIDLANE;
         }
 
-        if (!_isDashing)
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            if (Input.GetKeyDown(KeyCode.A) && _currentLane != CurrentLane.LEFTLANE)
-                Dash(-1);
-
-            if (Input.GetKeyDown(KeyCode.D) && _currentLane != CurrentLane.RIGHTLANE)
-                Dash(1);
+            if (_currentLane == CurrentLane.MIDLANE)
+                _currentLane = CurrentLane.RIGHTLANE;
+            else if (_currentLane == CurrentLane.LEFTLANE)
+                _currentLane = CurrentLane.MIDLANE;
         }
     }
 
+
     private void FixedUpdate()
     {
-        Vector3 horizontal = new Vector3(transform.forward.x * _speed, 0, transform.forward.z * _speed);
+        Vector3 forward = new Vector3(0, 0, _speed);
 
-        if (_isDashing)
+        float targetX = 0;
+
+        switch (_currentLane)
         {
-            _dashTime += Time.fixedDeltaTime;
-
-            horizontal.x = _dashForce * _direction;
-
-            if (_dashTime >= _dashDuration)
-            {
-                _isDashing = false;
-            }
+            case CurrentLane.LEFTLANE:
+                targetX = -_laneOffset;
+                break;
+            case CurrentLane.MIDLANE:
+                targetX = 0;
+                break;
+            case CurrentLane.RIGHTLANE:
+                targetX = _laneOffset;
+                break;
         }
 
-        _rb.velocity = new Vector3(horizontal.x, _rb.velocity.y, horizontal.z);
+        float newX = Mathf.MoveTowards(_rb.position.x, targetX, _laneChangeSpeed * Time.fixedDeltaTime);
 
-        //if (_rb.velocity.y < 0)
-        //{
-        //    _rb.AddForce(Vector3.down * _addGravity);
-        //}
+        Vector3 newPos = new Vector3(newX, _rb.position.y, _rb.position.z);
+
+        _rb.MovePosition(newPos + forward * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<Coins>(out var coins))
+        if (other.TryGetComponent<Coins>(out var coins))
         {
             coins.Collect(this);
         }
@@ -91,13 +89,6 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-    }
-
-    private void Dash(int direction)
-    {
-        _isDashing = true;
-        _direction = direction;
-        _dashTime = 0f;
     }
 
     public void AddScore(int amount, Coins.coinType coin)
