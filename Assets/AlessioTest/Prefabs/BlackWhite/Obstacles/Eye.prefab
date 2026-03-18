@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3494625034470867426}
   - component: {fileID: 2792746469427893003}
+  - component: {fileID: 7479331723974787745}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -138,12 +139,25 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.21
   m_Center: {x: -0.2, y: -0.03, z: 0.03}
+--- !u!114 &7479331723974787745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903254581868592166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8caeb869713c744996f97a1bc9376e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageAmount: 1
 --- !u!1 &2049372032635822709
 GameObject:
   m_ObjectHideFlags: 0
