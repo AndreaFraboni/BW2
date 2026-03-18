@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class AnimatorLayerSwitcher : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
     [SerializeField] private int _gameplayLayer = 0;
     [SerializeField] private int _cinematicLayer = 1;
 
+    private Animator _animator;
+
     private void Awake()
     {
+        _animator = GetComponent<Animator>();
         SetCinematicMode();
     }
     public void SetCinematicMode()

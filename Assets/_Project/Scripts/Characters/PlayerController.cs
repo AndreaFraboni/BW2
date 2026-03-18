@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public enum CurrentLane { LEFTLANE, RIGHTLANE, MIDLANE }
 
+    
     [Header("Player Settings")]
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _jumpForce;
@@ -16,16 +17,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _laneChangeSpeed = 15f;
 
     private Rigidbody _rb;
-    private GroundCheck _gc;
+    private GroundCheckAlessio _gc;
+    private AnimationParamHandler _animationParamHandler;
 
     private int _cyberScore;
     private int _naturalScore;
     private int _blackWhiteScore;
 
+    public AnimationParamHandler AnimationParamHandler => _animationParamHandler;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _gc = GetComponentInChildren<GroundCheck>();
+        _gc = GetComponentInChildren<GroundCheckAlessio>();
+        _animationParamHandler = GetComponent<AnimationParamHandler>();
         _currentLane = CurrentLane.MIDLANE;
     }
 
@@ -41,6 +46,7 @@ public class PlayerController : MonoBehaviour
                 _currentLane = CurrentLane.LEFTLANE;
             else if (_currentLane == CurrentLane.RIGHTLANE)
                 _currentLane = CurrentLane.MIDLANE;
+            AnimationParamHandler.ChangeLaneL();
         }
 
         if (Input.GetKeyDown(KeyCode.D))
@@ -49,6 +55,7 @@ public class PlayerController : MonoBehaviour
                 _currentLane = CurrentLane.RIGHTLANE;
             else if (_currentLane == CurrentLane.LEFTLANE)
                 _currentLane = CurrentLane.MIDLANE;
+            AnimationParamHandler.ChangeLaneR();
         }
     }
 
@@ -90,6 +97,7 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        _animationParamHandler.Jump();
     }
 
     public void AddScore(int amount, Coins.coinType coin)

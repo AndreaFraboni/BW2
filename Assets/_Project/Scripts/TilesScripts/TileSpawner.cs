@@ -13,8 +13,6 @@ public class TileSpawner : MonoBehaviour
     private float _nextSpawnZ = -31.8f;
     private float _startOffset = 5.0f;
 
-    [SerializeField] private Transform _player;
-
     [SerializeField] private int _initialNumTiles = 5;
     [SerializeField] private float _tileLength = 20f;
     [SerializeField] private float _limitMeters = 150f;
@@ -30,6 +28,7 @@ public class TileSpawner : MonoBehaviour
 
     private Vector3 _playerStartPos;
     private Quaternion _playerQuat;
+    private Transform _player;
 
     [SerializeField] private bool _finalSequenceStarted = false;
     [SerializeField] private bool _finalSequenceSpawned = false;
@@ -58,14 +57,15 @@ public class TileSpawner : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        _playerStartPos = _player.position;
-        _playerQuat = _player.rotation;
     }
 
     private void Start()
     {
         CreateInitialTiles();
+
+        _player = PlayerManager.Instance.CurrentPlayer.transform;
+        _playerStartPos = _player.position;
+        _playerQuat = _player.rotation;
     }
 
     private void CreateInitialTiles()
