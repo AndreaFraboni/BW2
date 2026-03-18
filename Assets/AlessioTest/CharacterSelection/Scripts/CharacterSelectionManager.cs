@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class CharacterSelectionManager : GenericSingleton<CharacterSelectionManager>
 {
-    [SerializeField] private TMP_InputField _nameInput;
+    [SerializeField] private TMP_InputField _inputFieldObj;
 
     public enum CharacterType { Female, Male }
     public CharacterType SelectedType { get; private set; }
@@ -16,7 +16,10 @@ public class CharacterSelectionManager : GenericSingleton<CharacterSelectionMana
 
     public void OnConfirmPressed()
     {
-        //if (string.IsNullOrWhiteSpace(_nameInput.text)) return;
+        if (string.IsNullOrWhiteSpace(_inputFieldObj.text)) return;
+
+        IOManager.Instance.SetPlayerName(_inputFieldObj.text);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -19,6 +19,9 @@ public class AudioSettingData
 }
 public class IOManager : GenericSingleton<IOManager>
 {
+    public PlayerData mPlayerData = new PlayerData();
+    public AudioSettingData mAudioSettings = new AudioSettingData();
+
     private string _savePlayerFile;
     private string _saveAudioSettingsFile;
 
@@ -28,13 +31,21 @@ public class IOManager : GenericSingleton<IOManager>
         _saveAudioSettingsFile = Application.persistentDataPath + "/audiosettings.json";
     }
 
-//******************************************************************************************//
-//*************************  PLAYER DATA LOAD & SAVE PLAYER DATA ***************************//
-//******************************************************************************************//
+    public void SetPlayerName(string name)
+    {
+        mPlayerData.Name = name;
+    }
+
+    public void SetPlayerTime(int Playertime)
+    {
+        mPlayerData.Time = Playertime;
+    }
+
+    //******************************************************************************************//
+    //*************************  PLAYER DATA LOAD & SAVE PLAYER DATA ***************************//
+    //******************************************************************************************//
     public bool LoadPlayerDataFile(ref string playerName, ref int playerScore)
     {
-        PlayerData mPlayerData = new PlayerData();
-
         if (!File.Exists(_savePlayerFile))
         {
             Debug.Log("Player Data Loading problem: file json in lettura non esiste !!!");
@@ -73,12 +84,10 @@ public class IOManager : GenericSingleton<IOManager>
         return true;
     }
 
-    public bool SavePlayerDataFile(string PlayerName, int Time)
+    public bool SavePlayerDataFile() // string PlayerName, int Time
     {
-        PlayerData mPlayerData = new PlayerData();
-
-        mPlayerData.Name = PlayerName;
-        mPlayerData.Time = Time;
+        //mPlayerData.Name = PlayerName;
+        //mPlayerData.Time = Time;
 
         try
         {
@@ -99,8 +108,6 @@ public class IOManager : GenericSingleton<IOManager>
 //******************************************************************************************//
     public bool SaveAudioSettings(float masterVol, float musicVol, float sfxVol)
     {
-        AudioSettingData mAudioSettings = new AudioSettingData();
-
         mAudioSettings.masterVolValue = masterVol;
         mAudioSettings.musicVolValue = musicVol;
         mAudioSettings.sfxVolValue = sfxVol;
