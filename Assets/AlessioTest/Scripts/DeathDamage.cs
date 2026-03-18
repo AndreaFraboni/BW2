@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeathDamage : MonoBehaviour
 {
+    [SerializeField] private GameObject _graphicObject;
     [SerializeField] private int _damageAmount = 1;
    
     private void OnTriggerEnter(Collider other)
@@ -15,9 +16,9 @@ public class DeathDamage : MonoBehaviour
 
     private IEnumerator DisableCoroutine()
     {
-        gameObject.SetActive(false);
+        _graphicObject.SetActive(false);
         yield return new WaitForSeconds(1f);
-        gameObject.SetActive(true);
+        _graphicObject.SetActive(true);
 
     }
 }

@@ -9,7 +9,7 @@ public class GameStarter : MonoBehaviour
 
     private GameObject _currentPlayer;
 
-    private void Start()
+    private void Awake()
     {
         if(CharacterSelectionManager.Instance.SelectedType == CharacterSelectionManager.CharacterType.Female)
         {

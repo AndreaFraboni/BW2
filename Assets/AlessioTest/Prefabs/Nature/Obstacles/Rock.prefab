@@ -133,4 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8caeb869713c744996f97a1bc9376e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _graphicObject: {fileID: 7827732160463134392}
   _damageAmount: 1
+--- !u!1 &7827732160463134392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6319645159447468489, guid: 7f7c32865375c51489454545c0b8e504,
+    type: 3}
+  m_PrefabInstance: {fileID: 4966816010353227919}
+  m_PrefabAsset: {fileID: 0}
