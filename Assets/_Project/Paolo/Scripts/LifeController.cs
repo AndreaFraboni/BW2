@@ -1,26 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class LifeController : MonoBehaviour
 {
     [SerializeField] private int _life;
     [SerializeField] private int _maxLife = 3;
+    [SerializeField] private AnimationParamHandler _animHandler;
+
+    public Action<int> OnLifeChanged;
+        
+    public int CurrentLife => _life;
 
     private void Awake()
     {
         _life = _maxLife;
+
+        if (_animHandler == null) _animHandler = GetComponent<AnimationParamHandler>();
     }
 
-    public void SetLife(int life)
+    public void TakeDamage()
     {
-        _life = Mathf.Clamp(life, 0, _maxLife);
+        _life--;
 
-        if (_life == 0)
+        if (_life <= 0)
         {
-            //aggiungere funzione per la sconfitta
+            // DEATH
+           // _animHandler.Death();
         }
+
+        OnLifeChanged?.Invoke(_life);
     }
 
-    public void TakeDamage(int damage) => SetLife(_life - damage);
+
+
 }

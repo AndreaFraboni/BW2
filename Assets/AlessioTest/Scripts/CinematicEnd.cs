@@ -12,9 +12,11 @@ public class CinematicEnd : MonoBehaviour
 
     public Action OnActiveHUD;
 
+    [SerializeField] private GameObject HUD;
+
     public void StartGameplay()
     {
-        OnActiveHUD?.Invoke();
+        HUD.SetActive(true);
         TimeManager.Instance.SetGameStarted(true);
 
         _playerController.enabled = true;

@@ -6,9 +6,7 @@ public class AnimationParamHandler : MonoBehaviour
 {
     [SerializeField] private string _jumpName = "Jump";
     [SerializeField] private string _deathName = "Death";
-   
-
-
+  
     private Animator _animator;
 
     private void Start()
@@ -16,12 +14,12 @@ public class AnimationParamHandler : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
     }
 
-    private void Jump()
+    public void Jump()
     {
         _animator.SetTrigger(_jumpName);
     }
 
-    private void Death()
+    public void Death()
     {
         _animator.SetTrigger(_deathName);
     }

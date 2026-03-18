@@ -20,6 +20,7 @@ public class TimeManager : GenericSingleton<TimeManager>
         {
             _currentTime += Time.deltaTime;
             int secondiTrascorsi = (int)_currentTime;
+
             OnTimeUpdate?.Invoke(secondiTrascorsi);
         }
     }
