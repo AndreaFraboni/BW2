@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class PowerUpManager : GenericSingleton<PowerUpManager>
 {
     [SerializeField] private SO_PassivePowerUp[] _passivePowerUps;
+    public event Action OnPowerUp;
     
     private int[] _levels;
 
