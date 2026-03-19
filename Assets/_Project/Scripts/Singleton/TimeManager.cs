@@ -7,21 +7,31 @@ public class TimeManager : GenericSingleton<TimeManager>
 
     public bool isGameStarted = false;
 
-    public Action<int> OnTimeUpdate;   
+    public Action<int> OnTimeUpdate;
+
+    public bool isGameRunning = false;
+
+    public int time_elapsed;
 
     public void SetGameStarted(bool state)
     {
         isGameStarted = state;
+        isGameRunning = true;
     }
 
     private void Update()
     {
-        if (isGameStarted)
+        if (isGameStarted && isGameRunning)
         {
             _currentTime += Time.deltaTime;
-            int secondiTrascorsi = (int)_currentTime;
-            OnTimeUpdate?.Invoke(secondiTrascorsi);
+            time_elapsed = (int)_currentTime;
+            OnTimeUpdate?.Invoke(time_elapsed);
         }
     }
+    public void StopTimer()
+    {
+        isGameRunning = false;
 
+        IOManager.Instance.SetPlayerTime(time_elapsed);  
+    }
 }
