@@ -21,7 +21,7 @@ public class Bioma3Pool : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         CreatePool(poolSize);
     }

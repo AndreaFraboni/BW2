@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
 
-public class TimeManager : GenericSingleton<TimeManager>
+public class TimeManager : MonoBehaviour
 {
+    public static TimeManager Instance { get; private set; }
+
     [SerializeField] private float _currentTime = 0;
 
     public bool isGameStarted = false;
@@ -13,10 +15,22 @@ public class TimeManager : GenericSingleton<TimeManager>
 
     public int time_elapsed;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
     public void SetGameStarted(bool state)
     {
         isGameStarted = state;
         isGameRunning = true;
+        OnTimeUpdate?.Invoke(0);
     }
 
     private void Update()
@@ -30,8 +44,16 @@ public class TimeManager : GenericSingleton<TimeManager>
     }
     public void StopTimer()
     {
-        isGameRunning = false;
+        Debug.Log("STOP TIME");
 
-        IOManager.Instance.SetPlayerTime(time_elapsed);  
+        isGameRunning = false;
+        isGameStarted = false;
+
+
+        
+
+        IOManager.Instance.SetPlayerTime(time_elapsed);
+        OnTimeUpdate?.Invoke(0);
+        _currentTime = 0;
     }
 }

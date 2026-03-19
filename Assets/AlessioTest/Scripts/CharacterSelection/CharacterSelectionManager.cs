@@ -20,6 +20,6 @@ public class CharacterSelectionManager : GenericSingleton<CharacterSelectionMana
 
         IOManager.Instance.SetPlayerName(_inputFieldObj.text);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(2);
     }
 }

@@ -37,9 +37,6 @@ public class TileSpawner : MonoBehaviour
     [SerializeField] private int _TilesCycleCounter = 0;
 
     [SerializeField] private int _currentBioma = 1;
-    [SerializeField] private bool _bioma1Completed = false;
-    [SerializeField] private bool _bioma2Completed = false;
-    [SerializeField] private bool _bioma3Completed = false;
 
     [SerializeField] private CinemachineVirtualCamera _virtualcam;
 
@@ -52,23 +49,24 @@ public class TileSpawner : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("AWAKE");
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-
+        
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        CreateInitialTiles();
-
-        _player = PlayerManager.Instance.CurrentPlayer.transform;
-        _playerStartPos = _player.position;
-        _playerQuat = _player.rotation;
+            CreateInitialTiles();
+            _player = PlayerManager.Instance.CurrentPlayer.transform;
+            _playerStartPos = _player.position;
+            _playerQuat = _player.rotation;
+        
     }
 
     private void CreateInitialTiles()
@@ -244,23 +242,27 @@ public class TileSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (tiles.Count > 0 && _player.position.z > tiles[0].transform.position.z + (_tileLength * 2))
-        {
-            HideBackTile();
+        Debug.Log("UPDATE...");
 
-            if (!_finalSequenceStarted)
+            Debug.Log("UPDATE IS RUNNING");
+            if (tiles.Count > 0 && _player.position.z > tiles[0].transform.position.z + (_tileLength * 2))
             {
-                SpawnTile();
-            }
-        }
+                HideBackTile();
 
-        if (_player.position.z >= _limitMeters)
-        {
-            if (!_finalSequenceStarted)
-            {
-                ResetRunningGame();
+                if (!_finalSequenceStarted)
+                {
+                    SpawnTile();
+                }
             }
-        }
+
+            if (_player.position.z >= _limitMeters)
+            {
+                if (!_finalSequenceStarted)
+                {
+                    ResetRunningGame();
+                }
+            }
+        
     }
 
     public void ChangeBioma()
@@ -272,19 +274,16 @@ public class TileSpawner : MonoBehaviour
             switch (_currentBioma)
             {
                 case 1:
-                    _bioma1Completed = true;
                     Bioma1Pool.Instance.PutPoolObj(tile);
                     _Bioma1StartTile.SetActive(false);
                     break;
 
                 case 2:
-                    _bioma2Completed = true;
                     Bioma2Pool.Instance.PutPoolObj(tile);
                     _Bioma2StartTile.SetActive(false);
                     break;
 
                 case 3:
-                    _bioma3Completed = true;
                     Bioma3Pool.Instance.PutPoolObj(tile);
                     _Bioma3StartTile.SetActive(false);
                     break;
@@ -333,19 +332,16 @@ public class TileSpawner : MonoBehaviour
             switch (_currentBioma)
             {
                 case 1:
-                    _bioma1Completed = true;
                     Bioma1Pool.Instance.PutPoolObj(tile);
                     _Bioma1StartTile.SetActive(false);
                     break;
 
                 case 2:
-                    _bioma2Completed = true;
                     Bioma2Pool.Instance.PutPoolObj(tile);
                     _Bioma2StartTile.SetActive(false);
                     break;
 
                 case 3:
-                    _bioma3Completed = true;
                     Bioma3Pool.Instance.PutPoolObj(tile);
                     _Bioma3StartTile.SetActive(false);
                     break;

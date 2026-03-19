@@ -12,6 +12,10 @@ public class UITimer : MonoBehaviour
         TimeManager.Instance.OnTimeUpdate += UpdateTextTimerUI;
     }
 
+    private void OnDisable()
+    {
+        TimeManager.Instance.OnTimeUpdate -= UpdateTextTimerUI;
+    }
 
     private void UpdateTextTimerUI(int currenttime)
     {

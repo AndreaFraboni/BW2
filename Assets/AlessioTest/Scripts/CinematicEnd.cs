@@ -14,7 +14,6 @@ public class CinematicEnd : MonoBehaviour
     public void StartGameplay()
     {
         HUD.SetActive(true);
-
         TimeManager.Instance.SetGameStarted(true);
 
         PlayerManager.Instance.CurrentPlayer.enabled = true;

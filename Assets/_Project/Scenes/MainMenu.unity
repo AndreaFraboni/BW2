@@ -1099,7 +1099,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1769413817}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: CharacterSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6218,7 +6218,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.6
+  m_fontSize: 54.55
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1

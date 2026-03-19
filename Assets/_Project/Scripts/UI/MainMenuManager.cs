@@ -8,8 +8,6 @@ public class MainMenuManager : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] private AudioClip _backgroundMusic;
     [SerializeField] private AudioClip _clickSound;
-
-
     private void Start()
     {
         if (AudioManager.Instance != null)
@@ -21,10 +19,10 @@ public class MainMenuManager : MonoBehaviour
         AudioManager.Instance.PlaySFX(_clickSound);
     }
 
-    public void StartGame()
+    public void CharacterSelection()
     {
         AudioManager.Instance.StopAllAudioSource();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
     public void QuitGame()
     {
