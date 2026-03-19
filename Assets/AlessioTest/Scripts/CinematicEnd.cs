@@ -9,15 +9,17 @@ public class CinematicEnd : MonoBehaviour
 
     public Action OnActiveHUD;
 
+    [SerializeField] private GameObject HUD;
+
     public void StartGameplay()
     {
-        OnActiveHUD?.Invoke();
+        HUD.SetActive(true);
         TimeManager.Instance.SetGameStarted(true);
 
         PlayerManager.Instance.CurrentPlayer.enabled = true;
         PlayerManager.Instance.CurrentPlayer.AnimationParamHandler.AnimatorLayerSwitcher.SetGameplayMode();
         _enemyAnimatorLayerSwitch.SetGameplayMode();
-        PlayerManager.Instance.CurrentPlayer.transform.position = Vector3.zero;
+       // PlayerManager.Instance.CurrentPlayer.transform.position = Vector3.zero;
         
     }
 }

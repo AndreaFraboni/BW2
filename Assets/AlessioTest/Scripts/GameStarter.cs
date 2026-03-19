@@ -8,6 +8,7 @@ public class GameStarter : MonoBehaviour
     [SerializeField] private GameObject _malePlayer;
 
     private GameObject _currentPlayer;
+    private LifeController _lf;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class GameStarter : MonoBehaviour
             _malePlayer.SetActive(true);
         }
         PlayerController playerController = _currentPlayer.GetComponent<PlayerController>();
-        PlayerManager.Instance.SetPlayer(playerController);
+        LifeController _lf = _currentPlayer.GetComponent<LifeController>();
+        PlayerManager.Instance.SetPlayer(playerController,_lf);
     }
 }

@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rb;
     private GroundCheckAlessio _gc;
+    private LifeController _lc;
     private AnimationParamHandler _animationParamHandler;
 
     public AnimationParamHandler AnimationParamHandler => _animationParamHandler;
@@ -31,10 +32,11 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _gc = GetComponentInChildren<GroundCheckAlessio>();
+        _lc = GetComponentInChildren<LifeController>();
         _animationParamHandler = GetComponent<AnimationParamHandler>();
         _currentLane = CurrentLane.MIDLANE;
         _currentSpeed = _speed;
-        PlayerManager.Instance.SetPlayer(this);
+        PlayerManager.Instance.SetPlayer(this,_lc);
     }
 
     private void Update()
