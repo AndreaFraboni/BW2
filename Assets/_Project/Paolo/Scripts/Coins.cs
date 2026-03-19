@@ -6,12 +6,12 @@ public class Coins : MonoBehaviour
 {
     public enum coinType { CYBERCOIN, NATURALCOIN, BLACKWHITECOIN }
 
-    private int _coinValue = 1;
+   // private int _coinValue = 1;
     public coinType _coin;
 
     public void Collect(PlayerController player)
     {
-        player.AddScore(_coinValue, _coin);
+       // player.AddScore(_coinValue, _coin);
         Destroy(gameObject);
     }
 }

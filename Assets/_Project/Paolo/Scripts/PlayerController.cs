@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public enum CurrentLane { LEFTLANE, RIGHTLANE, MIDLANE }
 
+    ///Settare uno speed multiplier o adder sulla current speed ad ogni cambio bioma
+    ///Settare una max speed
+    
     
     [Header("Player Settings")]
     [SerializeField] private float _speed = 5f;
@@ -16,13 +19,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _laneOffset = 5f;
     [SerializeField] private float _laneChangeSpeed = 15f;
 
+    private float _currentSpeed;
+
     private Rigidbody _rb;
     private GroundCheckAlessio _gc;
     private AnimationParamHandler _animationParamHandler;
-
-    private int _cyberScore;
-    private int _naturalScore;
-    private int _blackWhiteScore;
 
     public AnimationParamHandler AnimationParamHandler => _animationParamHandler;
 
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
         _gc = GetComponentInChildren<GroundCheckAlessio>();
         _animationParamHandler = GetComponent<AnimationParamHandler>();
         _currentLane = CurrentLane.MIDLANE;
+        _currentSpeed = _speed;
+        PlayerManager.Instance.SetPlayer(this);
     }
 
     private void Update()
@@ -62,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 forward = new Vector3(0, 0, _speed);
+        Vector3 forward = new Vector3(0, 0, _currentSpeed);
 
         float targetX = 0;
 
@@ -86,35 +89,22 @@ public class PlayerController : MonoBehaviour
         _rb.MovePosition(newPos + forward * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<Coins>(out var coins))
-        {
-            coins.Collect(this);
-        }
-    }
-
     private void Jump()
     {
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _animationParamHandler.Jump();
     }
 
-    public void AddScore(int amount, Coins.coinType coin)
+    public void ActivateSlow(float duration , float slowMultiplier)
     {
-        switch (coin)
-        {
-            case Coins.coinType.CYBERCOIN:
-                _cyberScore += amount;
-                break;
-            case Coins.coinType.NATURALCOIN:
-                _naturalScore += amount;
-                break;
-            case Coins.coinType.BLACKWHITECOIN:
-                _blackWhiteScore += amount;
-                break;
-        }
-        Debug.Log("raccolto" + coin + _cyberScore + _naturalScore + _blackWhiteScore);
+        StartCoroutine((IEnumerator)SlowCoroutine(duration, slowMultiplier));
+    }
+
+    private IEnumerable SlowCoroutine(float duration , float slowMultiplier)
+    {
+        _currentSpeed = _speed * slowMultiplier;
+        yield return new WaitForSeconds(duration);
+        _currentSpeed = _speed;
     }
 }
 

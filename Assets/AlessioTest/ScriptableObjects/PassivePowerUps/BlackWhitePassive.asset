@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30118eb51a0b7e84eb47cac92bc945ab, type: 3}
+  m_Name: BlackWhitePassive
+  m_EditorClassIdentifier: 
+  _name: 
+  _description: 
+  _icon: {fileID: 0}
+  _id: 0
+  _effect: {fileID: 0}
+  _effectsPerLevel:
+  - {fileID: 11400000, guid: f643d85bcfb9e534899faf9d16c7e2b1, type: 2}
+  - {fileID: 11400000, guid: 8105308d8f23ee44688b56df95978bf6, type: 2}
+  - {fileID: 11400000, guid: 3ffa41b394d1a71439358e0e8849dd6a, type: 2}
+  _costPerLevel: 2c0100005802000084030000
+  _coinType: 2
