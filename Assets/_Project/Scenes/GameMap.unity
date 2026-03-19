@@ -2103,8 +2103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e780174beea94f9438b8a226a1cd5ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _jumpForce: 0
+  _speed: 10
+  _jumpForce: 20
   _currentLane: 2
   _laneOffset: 5
   _laneChangeSpeed: 15

@@ -6,13 +6,14 @@ using UnityEngine.Events;
 public class LifeController : MonoBehaviour
 {
     [Header("Health Settings")]
-    [SerializeField] private int _maxHealth = 90;
-    [SerializeField] private int _currentHealth;
+    [SerializeField] private int _maxHealth = 3; //Per powerUp fisso modificare Max
+    [SerializeField] private int _currentHealth; //Per consumabile modificare current
 
     [Header("Events")]
     [SerializeField] private UnityEvent _onPlayerDeath;
     [SerializeField] private UnityEvent<int, int> _onHealthChange;
 
+    private bool _isShielded = false;
     public int MaxHealth => _maxHealth;
 
     private void Start()
@@ -33,13 +34,36 @@ public class LifeController : MonoBehaviour
         }
     }
     public void RestoreFullHp() => SetHp(_maxHealth);
+
+    public void SetMaxHealth(int maxHealth)
+    {
+        _maxHealth = maxHealth;
+        RestoreFullHp();
+    }
     public void TakeDamage(float damage)
     {
+        if (_isShielded) return;
         SetHp((int)(_currentHealth - damage));
     }
 
-    public void AddHp(int amount)
+    public void AddHp(int amount) => SetHp(_currentHealth + amount);
+    public void Heal(int amount) => AddHp(amount);
+
+    public void AddMaxHits(int amount)
     {
-        SetHp(_currentHealth + amount);
+        _maxHealth += amount;
+        _onHealthChange?.Invoke(_currentHealth, _maxHealth);
+    }
+
+    public void ActivateShield(float duration)
+    {
+        StartCoroutine(ShieldCoroutine(duration));
+    }
+
+    private IEnumerator ShieldCoroutine(float duration)
+    {
+        _isShielded = true;
+        yield return new WaitForSeconds(duration);
+        _isShielded = false;
     }
 }
