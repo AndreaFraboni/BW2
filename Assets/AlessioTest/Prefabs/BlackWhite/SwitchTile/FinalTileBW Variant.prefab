@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 1713317010175724111}
   - component: {fileID: 5948861779197966986}
   - component: {fileID: 3386008694088014229}
-  - component: {fileID: 5589678466558208668}
+  - component: {fileID: 2387526971246400486}
   m_Layer: 0
   m_Name: TriggerFinalBioma3
   m_TagString: Untagged
@@ -211,7 +211,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5589678466558208668
+--- !u!114 &2387526971246400486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3523844725575022151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9e9d9c989a92a64e90f0e10a5bf18e2, type: 3}
+  m_Script: {fileID: 11500000, guid: cafce3e4a4ec995498cdafee4f5b9a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6063860678055807293

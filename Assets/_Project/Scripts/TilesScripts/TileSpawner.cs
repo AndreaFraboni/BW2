@@ -37,6 +37,9 @@ public class TileSpawner : MonoBehaviour
     [SerializeField] private int _TilesCycleCounter = 0;
 
     [SerializeField] private int _currentBioma = 1;
+    [SerializeField] private bool _bioma1Completed = false;
+    [SerializeField] private bool _bioma2Completed = false;
+    [SerializeField] private bool _bioma3Completed = false;
 
     [SerializeField] private CinemachineVirtualCamera _virtualcam;
 
@@ -92,7 +95,7 @@ public class TileSpawner : MonoBehaviour
                 _tile = Bioma3Pool.Instance.GetPoolObj();
                 break;
         }
-        
+
         _tile.transform.position = new Vector3(0f, 0f, _nextSpawnZ);
         _tile.transform.rotation = Quaternion.identity;
         _tile.SetActive(true);
@@ -104,7 +107,7 @@ public class TileSpawner : MonoBehaviour
     {
         if (_finalTilePrefab == null) return;
 
-       // _spawnedFinalTile = Instantiate(_finalTilePrefab, new Vector3(0f, 0f, _nextSpawnZ), Quaternion.identity);
+        // _spawnedFinalTile = Instantiate(_finalTilePrefab, new Vector3(0f, 0f, _nextSpawnZ), Quaternion.identity);
         switch (_currentBioma)
         {
             case 1:
@@ -118,7 +121,7 @@ public class TileSpawner : MonoBehaviour
             case 3:
                 _spawnedFinalTile = Instantiate(Bioma3Pool.Instance.finalTilePrefab, new Vector3(0f, 0f, _nextSpawnZ), Quaternion.identity);
                 break;
-        }     
+        }
 
         tiles.Add(_spawnedFinalTile);
 
@@ -220,9 +223,9 @@ public class TileSpawner : MonoBehaviour
         }
 
         _TilesCycleCounter++;
-        
+
         _nextSpawnZ = tiles[tiles.Count - 1].transform.position.z + _tileLength; // next Z will be last tile spawned position.z + tile lenght
-        
+
         if (_TilesCycleCounter >= _maxBiomaCycles)
         {
             _finalSequenceStarted = true;
@@ -269,16 +272,19 @@ public class TileSpawner : MonoBehaviour
             switch (_currentBioma)
             {
                 case 1:
+                    _bioma1Completed = true;
                     Bioma1Pool.Instance.PutPoolObj(tile);
                     _Bioma1StartTile.SetActive(false);
                     break;
 
                 case 2:
+                    _bioma2Completed = true;
                     Bioma2Pool.Instance.PutPoolObj(tile);
                     _Bioma2StartTile.SetActive(false);
                     break;
 
                 case 3:
+                    _bioma3Completed = true;
                     Bioma3Pool.Instance.PutPoolObj(tile);
                     _Bioma3StartTile.SetActive(false);
                     break;
@@ -293,6 +299,7 @@ public class TileSpawner : MonoBehaviour
         }
 
         _TilesCycleCounter = 0;
+
         _finalSequenceStarted = false;
         _finalSequenceSpawned = false;
 
@@ -316,5 +323,53 @@ public class TileSpawner : MonoBehaviour
         CreateInitialTiles();
         TeleportPlayerToStart();
     }
+
+    public void restartBioma1()
+    {
+        foreach (GameObject tile in tiles)
+        {
+            if (tile == _spawnedFinalTile) continue;
+
+            switch (_currentBioma)
+            {
+                case 1:
+                    _bioma1Completed = true;
+                    Bioma1Pool.Instance.PutPoolObj(tile);
+                    _Bioma1StartTile.SetActive(false);
+                    break;
+
+                case 2:
+                    _bioma2Completed = true;
+                    Bioma2Pool.Instance.PutPoolObj(tile);
+                    _Bioma2StartTile.SetActive(false);
+                    break;
+
+                case 3:
+                    _bioma3Completed = true;
+                    Bioma3Pool.Instance.PutPoolObj(tile);
+                    _Bioma3StartTile.SetActive(false);
+                    break;
+            }
+        }
+
+        tiles.Clear();
+
+        if (_spawnedFinalTile != null)
+        {
+            Destroy(_spawnedFinalTile);
+        }
+
+        _TilesCycleCounter = 0;
+
+        _finalSequenceStarted = false;
+        _finalSequenceSpawned = false;
+
+        _Bioma1StartTile.SetActive(true);
+        _currentBioma = 1;
+
+        CreateInitialTiles();
+        TeleportPlayerToStart();
+    }
+
 
 }

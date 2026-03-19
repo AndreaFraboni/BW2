@@ -536,7 +536,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: -0.3696438, z: 0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 12.007446, y: 10.030001, z: -79}
+  m_LocalPosition: {x: 48.74979, y: 40.030006, z: -115.74234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1524,6 +1524,9 @@ MonoBehaviour:
   _maxBiomaCycles: 3
   _TilesCycleCounter: 0
   _currentBioma: 1
+  _bioma1Completed: 0
+  _bioma2Completed: 0
+  _bioma3Completed: 0
   _virtualcam: {fileID: 1627623645}
   _finalTilePrefab: {fileID: 5945701984813583255, guid: 64175c423987e1b4885a2848acf9e3bb,
     type: 3}
@@ -2252,7 +2255,7 @@ MonoBehaviour:
   _speed: 10
   _jumpForce: 20
   _currentLane: 2
-  _laneOffset: 5
+  _laneOffset: 6
   _laneChangeSpeed: 15
 --- !u!114 &1042781140
 MonoBehaviour:
@@ -3597,7 +3600,7 @@ Transform:
   m_GameObject: {fileID: 1627623644}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: -0.3696438, z: 0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -37.382748, y: -112.0328, z: -205.67079}
+  m_LocalPosition: {x: -0.64040375, y: -82.03279, z: -242.41313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4245,7 +4248,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 20
+  m_CameraDistance: 80
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0

@@ -6,7 +6,7 @@ public class Bioma3FinalTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //TileSpawner.Instance.ChangeBioma();
+            TileSpawner.Instance.restartBioma1();
         }
     }
 
