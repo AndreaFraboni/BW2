@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sci-fi Coin
+* source:	https://sketchfab.com/3d-models/sci-fi-coin-e6c50859b7e841bc99b229f27f2e3fb9
+* author:	tomciomalina (https://sketchfab.com/tomciomalina)
+
+Model License:
+* license type:	CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
+* requirements:	Author must be credited. Modified versions must have the same license. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sci-fi Coin" (https://sketchfab.com/3d-models/sci-fi-coin-e6c50859b7e841bc99b229f27f2e3fb9) by tomciomalina (https://sketchfab.com/tomciomalina) licensed under CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)

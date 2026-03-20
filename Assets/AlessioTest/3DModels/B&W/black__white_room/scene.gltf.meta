@@ -1,0 +1,100 @@
+fileFormatVersion: 2
+guid: d894228c3fbddfa4b81901fc1bb40030
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\scene.bin
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\scene.bin
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Wood_roof_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Wood_roof_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Wood_01_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Wood_01_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Wood_Cuted_baseColor.png
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Wood_Cuted_baseColor.png
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_39_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_39_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_36_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_36_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\01_-_Default_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\01_-_Default_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_36_0_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_36_0_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_010_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_010_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_2142143706_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_2142143706_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_26_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_26_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_25_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_25_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_27_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_27_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\mb12_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\mb12_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_29_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_29_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\05_-_Default_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\05_-_Default_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_48_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_48_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_28_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_28_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Puff_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Puff_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_2142143526_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Material_2142143526_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\10_-_Default_baseColor.jpeg
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\10_-_Default_baseColor.jpeg
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Folder1_baseColor.png
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Folder1_baseColor.png
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\material_37_baseColor.png
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\material_37_baseColor.png
+  - type: 1
+    originalUri: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Folder2_baseColor.png
+    assetPath: Assets\AlessioTest\3DModels\B&W\black__white_room\textures\Folder2_baseColor.png
+  reportItems: []

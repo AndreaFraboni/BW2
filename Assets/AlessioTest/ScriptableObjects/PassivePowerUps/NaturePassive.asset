@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30118eb51a0b7e84eb47cac92bc945ab, type: 3}
+  m_Name: NaturePassive
+  m_EditorClassIdentifier: 
+  _name: Shield
+  _description: 
+  _icon: {fileID: 0}
+  _id: 0
+  _effect: {fileID: 0}
+  _effectsPerLevel:
+  - {fileID: 11400000, guid: f08a34554745d084b985a68056cf25c2, type: 2}
+  - {fileID: 11400000, guid: 1d6b0cabb25e5e24386c637812d7e17d, type: 2}
+  - {fileID: 11400000, guid: 5aeb86846efe8944580f678dfec6b164, type: 2}
+  _costPerLevel: 64000000c80000002c010000
+  _coinType: 1

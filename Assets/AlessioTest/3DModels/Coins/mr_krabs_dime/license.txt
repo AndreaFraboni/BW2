@@ -1,0 +1,11 @@
+Model Information:
+* title:	Mr Krabs' Dime
+* source:	https://sketchfab.com/3d-models/mr-krabs-dime-8b1cec0fecb945e4bd27322c4fa35ab3
+* author:	AnshiNoWara (https://sketchfab.com/anshinowara)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Mr Krabs' Dime" (https://sketchfab.com/3d-models/mr-krabs-dime-8b1cec0fecb945e4bd27322c4fa35ab3) by AnshiNoWara (https://sketchfab.com/anshinowara) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cyber Inu
+* source:	https://sketchfab.com/3d-models/cyber-inu-4d7f912ec6954e1aaf78366780dc3b67
+* author:	Dominik Zimmer (https://sketchfab.com/dominikzimmer)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cyber Inu" (https://sketchfab.com/3d-models/cyber-inu-4d7f912ec6954e1aaf78366780dc3b67) by Dominik Zimmer (https://sketchfab.com/dominikzimmer) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Black & White Room
+* source:	https://sketchfab.com/3d-models/black-white-room-b9f28580a8b74265b229da463fd9b65b
+* author:	Ahmed Belal (https://sketchfab.com/ezzdesign5)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Black & White Room" (https://sketchfab.com/3d-models/black-white-room-b9f28580a8b74265b229da463fd9b65b) by Ahmed Belal (https://sketchfab.com/ezzdesign5) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

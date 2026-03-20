@@ -1,0 +1,11 @@
+Model Information:
+* title:	Old Barn
+* source:	https://sketchfab.com/3d-models/old-barn-96cdbcedd8d04d64a4abcf801c0ca1dd
+* author:	reramil (https://sketchfab.com/reramil)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Old Barn" (https://sketchfab.com/3d-models/old-barn-96cdbcedd8d04d64a4abcf801c0ca1dd) by reramil (https://sketchfab.com/reramil) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

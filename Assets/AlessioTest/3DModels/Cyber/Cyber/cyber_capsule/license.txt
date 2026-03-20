@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cyber capsule
+* source:	https://sketchfab.com/3d-models/cyber-capsule-9590eff25abe49fb8b8b013d9b62aecd
+* author:	Anna Vidal (Milaein) (https://sketchfab.com/milaein)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cyber capsule" (https://sketchfab.com/3d-models/cyber-capsule-9590eff25abe49fb8b8b013d9b62aecd) by Anna Vidal (Milaein) (https://sketchfab.com/milaein) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
