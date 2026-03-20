@@ -6165,9 +6165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ef7692a2e9529419e14dd6230c2532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cyberCoins: 4000
-  _naturalCoins: 4000
-  _blackWhiteCoins: 4000
+  _cyberCoins: 0
+  _naturalCoins: 0
+  _blackWhiteCoins: 0
 --- !u!4 &2032487515
 Transform:
   m_ObjectHideFlags: 0
@@ -6267,7 +6267,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.55
+  m_fontSize: 54.6
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
