@@ -50,4 +50,9 @@ public class CharacterSelectionManager : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX(_clickSound);
     }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

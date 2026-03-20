@@ -9,22 +9,19 @@ public class PlayerData
     public string Name;
     public int Time;
 
-    public int cyberCoin;
-    public int natureCoin;
-    public int blackWhiteCoin;
+    //public int cyberCoin;
+    //public int natureCoin;
+    //public int blackWhiteCoin;
 
-    public int numShieldLevel;
-    public int numMagnet;
-    public int HealEffect;
-    public int lowEffect;
+    //public int numShieldLevel;
+    //public int numMagnet;
+    //public int HealEffect;
+    //public int lowEffect;
 
-    public int numCoinMulLevel;
-    //public int numCoinMulLV2;
-    //public int numCoinMulLV3;
-    public int numExtraLifeLevel;
-    //public int numExtraLifeLV2;
-    //public int numExtraLifeLV3;
+    //public int numCoinMulLevel;
 
+    //public int numExtraLifeLevel;
+ 
 }
 
 [System.Serializable]
