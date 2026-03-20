@@ -20,7 +20,7 @@ public class MainMenuManager : MonoBehaviour
         float musicVolume = 1f;
         float sfxVolume = 1f;
 
-        Debug.Log("MAIN MENU CHIAMA LOAFDER AUDIO SETTINGS !!!");
+        //Debug.Log("MAIN MENU Call LOADER AUDIO SETTINGS !!!");
         bool result = IOManager.Instance.LoadAudioSettings(ref masterVolume, ref musicVolume, ref sfxVolume);
 
         if (result)

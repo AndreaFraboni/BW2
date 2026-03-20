@@ -1247,6 +1247,30 @@ MonoBehaviour:
   _onPlayerDeath:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8450068982731897315}
+        m_TargetAssemblyTypeName: HUDcontroller, Assembly-CSharp
+        m_MethodName: StopAllSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8450068982731897315}
+        m_TargetAssemblyTypeName: HUDcontroller, Assembly-CSharp
+        m_MethodName: PlayGameOverMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 5211793285968235724}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1724,6 +1748,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeControllerRef: {fileID: 0}
+  _inGameMusic: {fileID: 8300000, guid: 0ecaca8215fe96a4d98133a11351026f, type: 3}
+  _clickSound: {fileID: 8300000, guid: 0cb4f7eaab975a848907789ee3472a0e, type: 3}
 --- !u!4 &562459375
 Transform:
   m_ObjectHideFlags: 0
@@ -2623,6 +2649,30 @@ MonoBehaviour:
   _onPlayerDeath:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8450068982731897315}
+        m_TargetAssemblyTypeName: HUDcontroller, Assembly-CSharp
+        m_MethodName: StopAllSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8450068982731897315}
+        m_TargetAssemblyTypeName: HUDcontroller, Assembly-CSharp
+        m_MethodName: PlayGameOverMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 5211793285968235724}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -12512,6 +12562,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverBanner: {fileID: 5211793285968235724}
   _hud: {fileID: 5330908882226551433}
+  _backgroundMusic: {fileID: 8300000, guid: efb9677f95b5798408f2291ac16f0fb9, type: 3}
+  _clickSound: {fileID: 8300000, guid: 0cb4f7eaab975a848907789ee3472a0e, type: 3}
+  _gameOver: {fileID: 8300000, guid: dddb11f755f252d4381688e5bd69f6b5, type: 3}
 --- !u!1 &8485978745897329432
 GameObject:
   m_ObjectHideFlags: 0

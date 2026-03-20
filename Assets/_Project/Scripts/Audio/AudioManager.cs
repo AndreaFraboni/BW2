@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _SFXSource;
 
+    public AudioClip _pickUpCoin;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -33,7 +35,7 @@ public class AudioManager : MonoBehaviour
             _musicSource.Play();
         }
     }
-    
+
     public void PlaySFX(AudioClip clip)
     {
         if (clip != null)

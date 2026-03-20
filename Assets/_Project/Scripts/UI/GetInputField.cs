@@ -28,7 +28,7 @@ public class GetInputField : MonoBehaviour
     public void ReadTextField(string s)
     {
         string input = s;
-        Debug.Log(input);
+        //Debug.Log(input);
 
         NewNamePlayer = input;
 

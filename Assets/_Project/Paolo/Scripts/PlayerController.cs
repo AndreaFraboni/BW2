@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_currentSpeed);
+        //Debug.Log(_currentSpeed);
 
         IncreseSpeed();
         IncreaseMaxSpeedOnTimer();

@@ -49,7 +49,7 @@ public class TileSpawner : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("AWAKE");
+        //Debug.Log("AWAKE");
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -242,9 +242,9 @@ public class TileSpawner : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("UPDATE...");
+       // Debug.Log("UPDATE...");
 
-            Debug.Log("UPDATE IS RUNNING");
+            //Debug.Log("UPDATE IS RUNNING");
             if (tiles.Count > 0 && _player.position.z > tiles[0].transform.position.z + (_tileLength * 2))
             {
                 HideBackTile();
