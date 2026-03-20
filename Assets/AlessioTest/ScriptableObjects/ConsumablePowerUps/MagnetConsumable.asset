@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Magnet
   _description: 
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 82734a85363e1aa45a576efc6f95e966, type: 3}
   _id: 0
   _effect: {fileID: 11400000, guid: 9a176367c3c86da429ecef5218ee0d34, type: 2}
   _cost: 100

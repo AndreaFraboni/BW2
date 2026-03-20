@@ -20,6 +20,8 @@ public class UI_SlotShopConsumable : UI_SlotShop
     {
         int cost = _consumablePowerUp.Cost;
         _buyButton.interactable = CoinManager.Instance.CanAfford(cost , _consumablePowerUp.CoinType);
+        _buyButton.interactable = !_consumablePowerUp.IsItemPurchased;
+
         _costText.SetText(cost.ToString());
     }
 }

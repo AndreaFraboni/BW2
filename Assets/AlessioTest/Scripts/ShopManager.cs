@@ -43,6 +43,8 @@ public class ShopManager : GenericSingleton<ShopManager>
 
     private void BuyConsumable(SO_ConsumablePowerUp consumable)
     {
+        if (consumable.IsItemPurchased) return;
+        consumable.IsItemPurchased = true;
         CoinManager.Instance.Spend(consumable.Cost, consumable.CoinType);
         InventoryManager.Instance.AddItem(consumable);
     }

@@ -8,6 +8,20 @@ public class PlayerData
 {
     public string Name;
     public int Time;
+
+    //public int cyberCoin;
+    //public int natureCoin;
+    //public int blackWhiteCoin;
+
+    //public int numShieldLevel;
+    //public int numMagnet;
+    //public int HealEffect;
+    //public int lowEffect;
+
+    //public int numCoinMulLevel;
+
+    //public int numExtraLifeLevel;
+ 
 }
 
 [System.Serializable]

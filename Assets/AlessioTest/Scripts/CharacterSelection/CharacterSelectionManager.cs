@@ -8,6 +8,10 @@ public class CharacterSelectionManager : MonoBehaviour
 
     [SerializeField] private TMP_InputField _inputFieldObj;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip _backgroundMusic;
+    [SerializeField] private AudioClip _clickSound;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -18,6 +22,12 @@ public class CharacterSelectionManager : MonoBehaviour
 
         Instance = this;
     }
+
+    private void Start()
+    {
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayMusic(_backgroundMusic);
+    }
+
 
     public enum CharacterType { Female, Male }
     public CharacterType SelectedType { get; private set; }
@@ -34,5 +44,15 @@ public class CharacterSelectionManager : MonoBehaviour
         IOManager.Instance.SetPlayerName(_inputFieldObj.text);
 
         SceneManager.LoadScene(2);
+    }
+
+    public void PlayClickSound()
+    {
+        AudioManager.Instance.PlaySFX(_clickSound);
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

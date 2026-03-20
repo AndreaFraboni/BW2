@@ -19,7 +19,6 @@ public class CinematicEnd : MonoBehaviour
 
         PlayerManager.Instance.CurrentPlayer.enabled = true;
         PlayerManager.Instance.CurrentPlayer.AnimationParamHandler.AnimatorLayerSwitcher.SetGameplayMode();
-        _enemyAnimatorLayerSwitch.SetGameplayMode();
         PowerUpManager.Instance.ApplyAllOwned();
        // PlayerManager.Instance.CurrentPlayer.transform.position = Vector3.zero;
 

@@ -1802,6 +1802,7 @@ MonoBehaviour:
   _mixer: {fileID: 24100000, guid: 6c5c8bfddd1fa5f46858991d3abeb96c, type: 2}
   _musicSource: {fileID: 61871584}
   _SFXSource: {fileID: 750829544}
+  _pickUpCoin: {fileID: 8300000, guid: 490fe88f2d34cef47b3cd305f579e8a4, type: 3}
 --- !u!4 &486131659
 Transform:
   m_ObjectHideFlags: 0
@@ -4721,6 +4722,15 @@ MonoBehaviour:
   mPlayerData:
     Name: 
     Time: 0
+    cyberCoin: 0
+    natureCoin: 0
+    blackWhiteCoin: 0
+    numShieldLevel: 0
+    numMagnet: 0
+    HealEffect: 0
+    lowEffect: 0
+    numCoinMulLevel: 0
+    numExtraLifeLevel: 0
   mAudioSettings:
     masterVolValue: 0
     musicVolValue: 0
@@ -5443,7 +5453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _backgroundMusic: {fileID: 8300000, guid: efb9677f95b5798408f2291ac16f0fb9, type: 3}
-  _clickSound: {fileID: 8300000, guid: c2f9ae31178d9d74ba0fd8e0afbf2a8e, type: 3}
+  _clickSound: {fileID: 8300000, guid: 0cb4f7eaab975a848907789ee3472a0e, type: 3}
 --- !u!1 &1790194491
 GameObject:
   m_ObjectHideFlags: 0
@@ -6155,9 +6165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ef7692a2e9529419e14dd6230c2532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cyberCoins: 4000
-  _naturalCoins: 4000
-  _blackWhiteCoins: 4000
+  _cyberCoins: 0
+  _naturalCoins: 0
+  _blackWhiteCoins: 0
 --- !u!4 &2032487515
 Transform:
   m_ObjectHideFlags: 0
@@ -6257,7 +6267,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.55
+  m_fontSize: 54.6
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6626,6 +6636,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1769413817}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: Shop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1769413817}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
