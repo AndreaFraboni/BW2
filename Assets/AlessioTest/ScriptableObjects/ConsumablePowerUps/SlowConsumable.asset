@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b7d7b17b683f04987da6195b5b4a9a, type: 3}
   m_Name: SlowConsumable
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Slow
   _description: 
   _icon: {fileID: 0}
   _id: 0
-  _effect: {fileID: 0}
+  _effect: {fileID: 11400000, guid: 47d67c351de79414cbf24d72ba4c8529, type: 2}
   _cost: 150
   _coinType: 1

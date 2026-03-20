@@ -1,39 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_SlotShop : MonoBehaviour
+public abstract class UI_SlotShop : MonoBehaviour
 {
-    [SerializeField] private SO_PassivePowerUp _passiveItem;
-    [SerializeField] private TextMeshProUGUI _nameText;
-    [SerializeField] private TextMeshProUGUI _levelText;
-    [SerializeField] private TextMeshProUGUI _costText;
-    [SerializeField] private TextMeshProUGUI _effectText;
-    [SerializeField] private TextMeshProUGUI _descriptionText;
-    [SerializeField] private Button _buyButton;
+   
+    [SerializeField] protected TextMeshProUGUI _nameText;
+    [SerializeField] protected TextMeshProUGUI _levelText;
+    [SerializeField] protected TextMeshProUGUI _costText;
+    [SerializeField] protected TextMeshProUGUI _effectText;
+    [SerializeField] protected TextMeshProUGUI _descriptionText;
+    [SerializeField] protected Button _buyButton;
 
-    private void UIUpdate()
+    private void Start()
     {
-        int level = PowerUpManager.Instance.GetLevel(_passiveItem);
-        _levelText.SetText($"lvl : {level} / {_passiveItem.MaxLevel}");
-        if( level >= _passiveItem.MaxLevel )
-        {
-            _buyButton.interactable = false;
-            _costText.SetText($"MAX LEVEL");
-        }
-        else
-        {
-            int cost = _passiveItem.GetCost(level);
-            _buyButton.interactable = CoinManager.Instance.GetCoins(_passiveItem.CoinType) > cost ? true : false;
-            _costText.SetText(cost.ToString());
-        }
+        SetUp();
+
     }
 
-    private void OnBuyClick()
+    private void OnDestroy()
     {
-        ShopManager.Instance.Buy(_passiveItem);
+        if (PowerUpManager.Instance != null) 
+        {
+            PowerUpManager.Instance.OnPowerUp -= UIUpdate;
+        }
+        if (ShopManager.Instance != null)
+        {
+            ShopManager.Instance.OnItemPurchased -= UIUpdate;
+        }
+        if (CoinManager.Instance != null)
+        {
+            CoinManager.Instance.CoinChanged -= OnCoinChange;
+        }
+        
+    }
+    protected abstract void UIUpdate();
+    
+    private void OnCoinChange(int coin , CoinType coinType)
+    {
+        UIUpdate();
+    }
+    protected abstract void OnBuyClick();
+    
+       
+    
+
+    protected virtual void SetUp()
+    {
+        _buyButton.onClick.RemoveAllListeners();
+        _buyButton.onClick.AddListener(OnBuyClick);
+        UIUpdate();
+        PowerUpManager.Instance.OnPowerUp += UIUpdate;
+        ShopManager.Instance.OnItemPurchased += UIUpdate;
+        CoinManager.Instance.CoinChanged += OnCoinChange;
+       
     }
 
 

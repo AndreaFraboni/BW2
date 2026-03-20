@@ -9,7 +9,8 @@ public class SO_MagnetEffect : SO_Effect
 
     public override void Apply(GameObject user)
     {
-        if (user.TryGetComponent(out PickUpDetector detector))
+        PickUpDetector detector = user.GetComponentInChildren<PickUpDetector>();
+        if (detector != null) 
             detector.ActivateMagnet(_duration);
     }
 }

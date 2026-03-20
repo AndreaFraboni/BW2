@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30118eb51a0b7e84eb47cac92bc945ab, type: 3}
   m_Name: BlackWhitePassive
   m_EditorClassIdentifier: 
-  _name: 
+  _name: ExtraLife
   _description: 
   _icon: {fileID: 0}
   _id: 0

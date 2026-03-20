@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class UI_Inventory : MonoBehaviour
 {
-    [SerializeField] private InventoryManager _inventoryManager;
     [SerializeField] private CanvasGroup _group;
     [SerializeField] private List<UI_InventorySlot> _slots;
 
     private void OnEnable()
     {
-        _inventoryManager.OnInventoryChange += Refresh;
+        InventoryManager.Instance.OnInventoryChange += Refresh;
         Refresh();
     }
 
     private void Refresh()
     {
-        if (_inventoryManager.SlotCount == 0)
+        if (InventoryManager.Instance.SlotCount == 0)
         {
             _group.alpha = 0f;
             return;
@@ -25,9 +24,9 @@ public class UI_Inventory : MonoBehaviour
 
         for (int i = 0; i < _slots.Count; i++)
         {
-            if (i < _inventoryManager.SlotCount)
+            if (i < InventoryManager.Instance.SlotCount)
             {
-                _slots[i].SetSlot(_inventoryManager.GetItem(i));
+                _slots[i].SetSlot(InventoryManager.Instance.GetItem(i));
             }
             else
             {
@@ -38,6 +37,7 @@ public class UI_Inventory : MonoBehaviour
 
     private void OnDisable()
     {
-        _inventoryManager.OnInventoryChange -= Refresh;
+        if (InventoryManager.Instance != null) 
+        InventoryManager.Instance.OnInventoryChange -= Refresh;
     }
 }

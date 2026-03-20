@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     public enum CurrentLane { LEFTLANE, RIGHTLANE, MIDLANE }
 
-    ///Settare uno speed multiplier o adder sulla current speed ad ogni cambio bioma
-    ///Settare una max speed
-    
-    
     [Header("Player Settings")]
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _maxSpeedIncrease;
+    [SerializeField] private float _acceleration;
+    [SerializeField] private float _timeGap;
     [SerializeField] private CurrentLane _currentLane;
 
     [Header("Lane Settings")]
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _laneChangeSpeed = 15f;
 
     private float _currentSpeed;
+    private float _timer;
 
     private Rigidbody _rb;
     private GroundCheckAlessio _gc;
@@ -37,10 +38,16 @@ public class PlayerController : MonoBehaviour
         _currentLane = CurrentLane.MIDLANE;
         _currentSpeed = _speed;
         PlayerManager.Instance.SetPlayer(this,_lc);
+       
     }
 
     private void Update()
     {
+        Debug.Log(_currentSpeed);
+
+        IncreseSpeed();
+        IncreaseMaxSpeedOnTimer();
+
         if (Input.GetButtonDown("Jump") && _gc.IsGrounded)
             Jump();
 
@@ -99,14 +106,37 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateSlow(float duration , float slowMultiplier)
     {
-        StartCoroutine((IEnumerator)SlowCoroutine(duration, slowMultiplier));
+        StartCoroutine(SlowCoroutine(duration, slowMultiplier));
     }
 
-    private IEnumerable SlowCoroutine(float duration , float slowMultiplier)
+    private IEnumerator SlowCoroutine(float duration , float slowMultiplier)
     {
-        _currentSpeed = _speed * slowMultiplier;
+        float currentSpeed = _currentSpeed;
+        _currentSpeed *= slowMultiplier;
         yield return new WaitForSeconds(duration);
-        _currentSpeed = _speed;
+        _currentSpeed = currentSpeed;
+
+    }
+
+    private void IncreseSpeed()
+    {
+        _currentSpeed = Mathf.MoveTowards(_currentSpeed, _maxSpeed, _acceleration * Time.deltaTime);
+    }
+
+    public void IncreseMaxSpeed()
+    {
+        _maxSpeed += _maxSpeedIncrease;
+    }
+
+    private void IncreaseMaxSpeedOnTimer()
+    {
+        
+        _timer += Time.deltaTime;
+        if (_timer >= _timeGap)
+        {
+            _timer = 0f;
+            IncreseMaxSpeed();
+        }
     }
 }
 

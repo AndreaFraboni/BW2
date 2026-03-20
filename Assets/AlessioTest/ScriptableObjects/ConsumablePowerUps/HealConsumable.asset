@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b7d7b17b683f04987da6195b5b4a9a, type: 3}
   m_Name: HealConsumable
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Heal
   _description: 
   _icon: {fileID: 0}
   _id: 0
-  _effect: {fileID: 0}
+  _effect: {fileID: 11400000, guid: 3ae3482de380f6b4b8ea85bee2eb7365, type: 2}
   _cost: 400
   _coinType: 2

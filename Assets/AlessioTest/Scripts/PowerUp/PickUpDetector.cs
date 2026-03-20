@@ -5,9 +5,9 @@ using UnityEngine;
 public class PickUpDetector : MonoBehaviour
 {
     [SerializeField] private float _pickUpRadius = 2f;
+    [SerializeField] private float _magnetRadius = 8f;
     [SerializeField] private LayerMask _pickupLayer;
 
-    private float _magnetRadius;
     private bool _magnetActive = false;
 
     private void Update()
@@ -18,6 +18,7 @@ public class PickUpDetector : MonoBehaviour
         foreach (var hit in hits)
         {
             if (hit.TryGetComponent(out IPickable pickable))
+                if(pickable.IsPicked) return;
                 pickable.Pick();
         }
     }
@@ -29,7 +30,6 @@ public class PickUpDetector : MonoBehaviour
     private IEnumerator MagnetCoroutine(float duration)
     {
         _magnetActive = true;
-        _magnetRadius = _pickUpRadius * 5f;
         yield return new WaitForSeconds(duration);
         _magnetActive = false;
     }
@@ -37,6 +37,6 @@ public class PickUpDetector : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _pickUpRadius);
+        Gizmos.DrawWireSphere(transform.position, _magnetActive ? _magnetRadius : _pickUpRadius );
     }
 }

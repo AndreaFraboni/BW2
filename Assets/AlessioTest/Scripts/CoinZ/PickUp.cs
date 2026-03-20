@@ -17,6 +17,9 @@ public class PickUp : MonoBehaviour , IPickable
     [SerializeField] private UnityEvent _onPick;
 
     private Vector3 _position;
+    private bool _isPicked = false;
+
+    public bool IsPicked { get => _isPicked; set => _isPicked = value; }
 
     private void Start()
     {
@@ -37,16 +40,20 @@ public class PickUp : MonoBehaviour , IPickable
 
     protected virtual void OnPick(GameObject player)
     {
+        if (_isPicked) return;
+        _isPicked = true;
         _onPick.Invoke();
         StartCoroutine(RespawnCoroutine());
     }
-
+    
     private IEnumerator RespawnCoroutine()
     {
+        
         _graphicObject.SetActive(false);
 
         yield return new WaitForSeconds(_respawnDelay);
 
         _graphicObject.SetActive(true);
+        _isPicked = false;
     }
 }

@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : GenericSingleton<InventoryManager>
 {
-    public static InventoryManager Instance { get; private set; }
-    
     [SerializeField] private List<SO_GenericItem> _inventory;
     [SerializeField] private int _maxSlots;
 
@@ -20,16 +18,11 @@ public class InventoryManager : MonoBehaviour
     {
         _keyCodes = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6 };
     }
-    private void Awake()
-    {
-        KeyCodeMap();
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
 
-        Instance = this;
+    protected override void Awake()
+    {
+        base.Awake();
+        KeyCodeMap();
     }
 
     public void TryToUse(int itemIndex)
@@ -61,7 +54,7 @@ public class InventoryManager : MonoBehaviour
     {
         return FindItem(item) >= 0;
     }
-
+ 
     public void AddItem(SO_GenericItem item)
     {
         if (_inventory.Count >= _maxSlots) return;

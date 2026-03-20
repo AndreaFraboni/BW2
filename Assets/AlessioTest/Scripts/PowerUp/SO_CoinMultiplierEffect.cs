@@ -10,5 +10,6 @@ public class SO_CoinMultiplierEffect : SO_Effect
     public override void Apply(GameObject user) 
     { 
         CoinManager.Instance.SetMultiplier(_multiplier);
+        
     }
 }

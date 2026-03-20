@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b7d7b17b683f04987da6195b5b4a9a, type: 3}
   m_Name: MagnetConsumable
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Magnet
   _description: 
   _icon: {fileID: 0}
   _id: 0
-  _effect: {fileID: 0}
+  _effect: {fileID: 11400000, guid: 9a176367c3c86da429ecef5218ee0d34, type: 2}
   _cost: 100
   _coinType: 0

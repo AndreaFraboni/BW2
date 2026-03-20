@@ -57,6 +57,7 @@ public class LifeController : MonoBehaviour
     public void AddMaxHits(int amount)
     {
         maxHealth += amount;
+        RestoreFullHp();
         _onHealthChange?.Invoke(currentHealth, maxHealth);
     }
 

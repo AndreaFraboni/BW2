@@ -24,6 +24,12 @@ public class MainMenuManager : MonoBehaviour
         AudioManager.Instance.StopAllAudioSource();
         SceneManager.LoadScene(1);
     }
+
+    public void Shop()
+    {
+        AudioManager.Instance.StopAllAudioSource();
+        SceneManager.LoadScene(3);
+    }
     public void QuitGame()
     {
         {
