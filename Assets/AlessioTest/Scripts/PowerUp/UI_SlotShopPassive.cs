@@ -22,7 +22,7 @@ public class UI_SlotShopPassive : UI_SlotShop
         if (level >= _passivePowerUp.MaxLevel)
         {
             _buyButton.interactable = false;
-            _costText.SetText($"MAX LEVEL");
+            _costText.SetText($"MAX");
         }
         else
         {
