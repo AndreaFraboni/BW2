@@ -53,6 +53,16 @@ public class IOManager : GenericSingleton<IOManager>
     public void SetPlayerTime(int Playertime)
     {
         mPlayerData.Time = Playertime;
+
+        if (SavePlayerDataFile())
+        {
+            Debug.LogWarning("PLAYER DATA SAVED !!");
+        }
+        else
+        {
+            Debug.LogError("PROBLEMA NEL SALVATAGGIO DEI DATI DEL PLAYER !!!");
+        }
+
     }
 
     //******************************************************************************************//
@@ -100,9 +110,6 @@ public class IOManager : GenericSingleton<IOManager>
 
     public bool SavePlayerDataFile() // string PlayerName, int Time
     {
-        //mPlayerData.Name = PlayerName;
-        //mPlayerData.Time = Time;
-
         try
         {
             string jsonwritingText = JsonUtility.ToJson(mPlayerData);
