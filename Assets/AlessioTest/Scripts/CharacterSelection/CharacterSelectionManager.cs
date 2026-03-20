@@ -2,9 +2,22 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CharacterSelectionManager : GenericSingleton<CharacterSelectionManager>
+public class CharacterSelectionManager : MonoBehaviour
 {
+    public static CharacterSelectionManager Instance { get; private set; }
+
     [SerializeField] private TMP_InputField _inputFieldObj;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     public enum CharacterType { Female, Male }
     public CharacterType SelectedType { get; private set; }
