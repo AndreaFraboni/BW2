@@ -44,12 +44,13 @@ public class TimeManager : MonoBehaviour
     }
     public void StopTimer()
     {
-        Debug.Log("STOP TIME");
+        //Debug.Log("STOP TIME");
 
         isGameRunning = false;
         isGameStarted = false;      
 
         IOManager.Instance.SetPlayerTime(time_elapsed);
+                
        // OnTimeUpdate?.Invoke(0);
         _currentTime = 0;
     }

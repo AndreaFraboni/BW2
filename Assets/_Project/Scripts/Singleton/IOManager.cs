@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,20 +9,15 @@ public class PlayerData
 {
     public string Name;
     public int Time;
-
     //public int cyberCoin;
     //public int natureCoin;
     //public int blackWhiteCoin;
-
     //public int numShieldLevel;
     //public int numMagnet;
     //public int HealEffect;
     //public int lowEffect;
-
     //public int numCoinMulLevel;
-
     //public int numExtraLifeLevel;
- 
 }
 
 [System.Serializable]
@@ -31,10 +27,27 @@ public class AudioSettingData
     public float musicVolValue;
     public float sfxVolValue;
 }
+
+[System.Serializable]
+public class HighscoreEntry
+{
+    public int time;
+    public string name;
+}
+
+[System.Serializable]
+public class Highscores
+{
+    public List<HighscoreEntry> highscoreEntryList;
+}
+
 public class IOManager : GenericSingleton<IOManager>
 {
     public PlayerData mPlayerData = new PlayerData();
     public AudioSettingData mAudioSettings = new AudioSettingData();
+
+    public Highscores mHighscores = new Highscores();
+    public List<Transform> highscoreEntryTransformList;
 
     private string _savePlayerFile;
     private string _saveAudioSettingsFile;
@@ -54,6 +67,8 @@ public class IOManager : GenericSingleton<IOManager>
     {
         mPlayerData.Time = Playertime;
 
+        AddHighscoreEntry(mPlayerData.Time, mPlayerData.Name);
+
         if (SavePlayerDataFile())
         {
             Debug.LogWarning("PLAYER DATA SAVED !!");
@@ -64,6 +79,12 @@ public class IOManager : GenericSingleton<IOManager>
         }
 
     }
+
+    public void SetCoins(int num)
+    {
+
+    }    
+
 
     //******************************************************************************************//
     //*************************  PLAYER DATA LOAD & SAVE PLAYER DATA ***************************//
@@ -124,20 +145,20 @@ public class IOManager : GenericSingleton<IOManager>
         }
     }
 
-//******************************************************************************************//
-//********************* AUDIO SETTINGS LOAD & SAVE AUDIO DATA*******************************//
-//******************************************************************************************//
+    //******************************************************************************************//
+    //********************* AUDIO SETTINGS LOAD & SAVE AUDIO DATA*******************************//
+    //******************************************************************************************//
     public bool SaveAudioSettings(float masterVol, float musicVol, float sfxVol)
     {
         mAudioSettings.masterVolValue = masterVol;
         mAudioSettings.musicVolValue = musicVol;
         mAudioSettings.sfxVolValue = sfxVol;
-              
+
         try
         {
             string json = JsonUtility.ToJson(mAudioSettings);
             File.WriteAllText(_saveAudioSettingsFile, json);
-            Debug.Log("File di salvataggio Audio scritto in: " + _saveAudioSettingsFile);
+            Debug.Log("File di salvataggio Audio Settings è stato scritto in: " + _saveAudioSettingsFile);
             return true;
         }
         catch (System.Exception e)
@@ -153,7 +174,7 @@ public class IOManager : GenericSingleton<IOManager>
 
         if (!File.Exists(_saveAudioSettingsFile))
         {
-            Debug.Log("Loading problem: il json file non esiste.");
+            Debug.Log("Loading problem: il file json DELL'AUDIO SETTINGS non esiste.");
             return false;
         }
 
@@ -163,7 +184,7 @@ public class IOManager : GenericSingleton<IOManager>
 
             if (string.IsNullOrWhiteSpace(json))
             {
-                Debug.LogWarning("file json è vuoto ????");
+                Debug.LogWarning("file json dell'AUDIO SETTINGS è vuoto ????");
                 return false;
             }
 
@@ -171,12 +192,11 @@ public class IOManager : GenericSingleton<IOManager>
 
             if (mAudioSettings == null)
             {
-                Debug.LogWarning("problema : file json in lettura non è valido !!!");
+                Debug.LogWarning("problema : file json dei settaggi AUDIO in lettura non è valido !!!");
                 return false;
             }
             else
             {
-                Debug.LogWarning("carico i dati dal file alle strutture Audio !!!");
                 MasterVol = mAudioSettings.masterVolValue;
                 MusicVol = mAudioSettings.musicVolValue;
                 SFXVol = mAudioSettings.sfxVolValue;
@@ -185,10 +205,56 @@ public class IOManager : GenericSingleton<IOManager>
         }
         catch (System.Exception e)
         {
-            Debug.LogError("Errore nel caricamento dati per un errore : " + e.Message);
+            Debug.LogError("Errore nel caricamento dei dati AUDIO per un errore : " + e.Message);
             return false;
         }
 
     }
 
+
+    //*********************************************************************************************//
+    //******************************* LEDEARBOARD ............ ************************************//
+    //*********************************************************************************************//
+    public void AddHighscoreEntry(int Time, string Name)
+    {
+        string saveFilePath = Path.Combine(Application.persistentDataPath, "LeaderboardData.json");
+
+        HighscoreEntry highscoreEntry = new HighscoreEntry { time = Time, name = Name }; // Nuovo punteggio da salvare .....
+
+        if (!File.Exists(saveFilePath))
+        {
+            // Il file non esiste, creiamo un nuovo file con una lista vuota
+            Debug.Log("File Leaderboard non esistente, ne creo uno nuovo.");
+            Highscores highscores = new Highscores();
+            highscores.highscoreEntryList = new List<HighscoreEntry>();  // inizializzo lista di high score ....
+            highscores.highscoreEntryList.Add(highscoreEntry); // Aggiungi il nuovo punteggio
+
+            string json = JsonUtility.ToJson(highscores, true);
+            File.WriteAllText(saveFilePath, json);
+            Debug.Log("Leaderboard creata e salvata in: " + saveFilePath);
+        }
+        else
+        {
+            string json = File.ReadAllText(saveFilePath);
+            Highscores highscores = JsonUtility.FromJson<Highscores>(json);
+
+            if (highscores == null)
+            {
+                Debug.LogWarning("Errore nel caricamento dei dati: il JSON non è valido.");
+                return;
+            }
+            if (highscores.highscoreEntryList == null)
+            {
+                highscores.highscoreEntryList = new List<HighscoreEntry>(); // inizializzo lista di high score .... 
+            }
+
+            highscores.highscoreEntryList.Add(highscoreEntry); // AGGIUNGI NUOVO TEMPO PLAYER ......
+
+            // Save updated Highscores     
+            json = JsonUtility.ToJson(highscores,true);
+            File.WriteAllText(saveFilePath, json);
+            Debug.Log("Leaderboard salvata in: " + saveFilePath);
+        }
+    }   
+    
 }

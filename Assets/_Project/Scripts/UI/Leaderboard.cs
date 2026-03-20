@@ -16,13 +16,14 @@ public class Leaderboard : MonoBehaviour
     {
         public List<HighscoreEntry> highscoreEntryList;
     }
+    private List<Transform> highscoreEntryTransformList = new List<Transform>();
 
     [Header("UI References")]
     public Transform entryContainer;
     public Transform entryTemplate;
     public int maxrank = 10;
 
-    private List<Transform> highscoreEntryTransformList = new List<Transform>();
+
     private string saveFilePath;
 
     private void Awake()
@@ -34,36 +35,36 @@ public class Leaderboard : MonoBehaviour
             entryTemplate.gameObject.SetActive(false);
         }
 
-        //LoadSaveLeaderboard();
-
-        CreateTestLeaderboard();
-    }
-
-    public void CreateTestLeaderboard()
-    {
-        Highscores highscores = new Highscores();
-        highscores.highscoreEntryList = new List<HighscoreEntry>()
-        {
-            new HighscoreEntry { time = 500, name = "Andrea" },
-            new HighscoreEntry { time = 300, name = "Marco" },
-            new HighscoreEntry { time = 100, name = "Luca" },
-            new HighscoreEntry { time = 50, name = "Giulia" },
-            new HighscoreEntry { time = 20, name = "Sara" },
-            new HighscoreEntry { time = 200, name = "Paolo" },
-            new HighscoreEntry { time = 150, name = "Anna" },
-            new HighscoreEntry { time = 120, name = "Franco" },
-            new HighscoreEntry { time = 100, name = "Elena" },
-            new HighscoreEntry { time = 1000, name = "Michele" },
-            new HighscoreEntry { time = 800, name = "Tizio" },
-            new HighscoreEntry { time = 80, name = "Caio" },
-            new HighscoreEntry { time = 10, name = "Sempronio" },
-            new HighscoreEntry { time = 100, name = "Giovannino" }
-        };
-
-        SaveHighscoresToFile(highscores);        
         LoadSaveLeaderboard();
-        Debug.Log("Leaderboard di prova creata.");
+
+        //CreateTestLeaderboard();
     }
+
+    //public void CreateTestLeaderboard()
+    //{
+    //    Highscores highscores = new Highscores();
+    //    highscores.highscoreEntryList = new List<HighscoreEntry>()
+    //    {
+    //        new HighscoreEntry { time = 500, name = "Andrea" },
+    //        new HighscoreEntry { time = 300, name = "Marco" },
+    //        new HighscoreEntry { time = 100, name = "Luca" },
+    //        new HighscoreEntry { time = 50, name = "Giulia" },
+    //        new HighscoreEntry { time = 20, name = "Sara" },
+    //        new HighscoreEntry { time = 200, name = "Paolo" },
+    //        new HighscoreEntry { time = 150, name = "Anna" },
+    //        new HighscoreEntry { time = 120, name = "Franco" },
+    //        new HighscoreEntry { time = 100, name = "Elena" },
+    //        new HighscoreEntry { time = 1000, name = "Michele" },
+    //        new HighscoreEntry { time = 800, name = "Tizio" },
+    //        new HighscoreEntry { time = 80, name = "Caio" },
+    //        new HighscoreEntry { time = 10, name = "Sempronio" },
+    //        new HighscoreEntry { time = 100, name = "Giovannino" }
+    //    };
+
+    //    SaveHighscoresToFile(highscores);        
+    //    LoadSaveLeaderboard();
+    //    Debug.Log("Leaderboard di prova creata.");
+    //}
 
     private void ClearLeaderboardUI()
     {
@@ -82,17 +83,20 @@ public class Leaderboard : MonoBehaviour
 
         if (highscores == null || highscores.highscoreEntryList == null || highscores.highscoreEntryList.Count == 0)
         {
-            highscores = CreateDefaultHighscores();
-            SaveHighscoresToFile(highscores);
+            Debug.LogWarning("TABELLA DEI PUNTEGGI VUOTA !!!!");
+            // highscores = CreateDefaultHighscores();
+            // SaveHighscoresToFile(highscores);
         }
-
-        SortHighscores(highscores.highscoreEntryList);
-
-        for (int i = 0; i < highscores.highscoreEntryList.Count && i < maxrank; i++)
+        else
         {
-            if (highscores.highscoreEntryList[i] != null)
+            Debug.LogWarning("TABELLA DEI PUNTEGGI è presente quindi la ordino !!!!");
+            SortHighscores(highscores.highscoreEntryList);
+            for (int i = 0; i < highscores.highscoreEntryList.Count && i < maxrank; i++)
             {
-                CreateHighscoreEntryTransform(highscores.highscoreEntryList[i], entryContainer, highscoreEntryTransformList);
+                if (highscores.highscoreEntryList[i] != null)
+                {
+                    CreateHighscoreEntryTransform(highscores.highscoreEntryList[i], entryContainer, highscoreEntryTransformList);
+                }
             }
         }
     }
@@ -103,29 +107,31 @@ public class Leaderboard : MonoBehaviour
 
         if (highscores == null || highscores.highscoreEntryList == null)
         {
-            highscores = CreateDefaultHighscores();
+            //highscores = CreateDefaultHighscores();
         }
-
-        HighscoreEntry newEntry = new HighscoreEntry
+        else
         {
-            time = time,
-            name = playerName
-        };
+            HighscoreEntry newEntry = new HighscoreEntry
+            {
+                time = time,
+                name = playerName
+            };
 
-        highscores.highscoreEntryList.Add(newEntry);
+            highscores.highscoreEntryList.Add(newEntry);
 
-        SortHighscores(highscores.highscoreEntryList);
-        SaveHighscoresToFile(highscores);
-        LoadSaveLeaderboard();
+            SortHighscores(highscores.highscoreEntryList);
+            SaveHighscoresToFile(highscores);
+            LoadSaveLeaderboard();
 
-        Debug.Log("Nuovo punteggio aggiunto: " + playerName + " - " + time);
+            Debug.Log("Nuovo punteggio aggiunto: " + playerName + " - " + time);
+        }
     }
 
     private Highscores LoadHighscoresFromFile()
     {
         if (!File.Exists(saveFilePath))
         {
-            Debug.Log("LoadSaveLeaderboard: file non esiste.");
+            Debug.Log("LoadSaveLeaderboard: il file non esiste !!!");
             return null;
         }
 
@@ -135,7 +141,7 @@ public class Leaderboard : MonoBehaviour
 
             if (string.IsNullOrWhiteSpace(json))
             {
-                Debug.LogWarning("LoadSaveLeaderboard: file vuoto.");
+                Debug.LogWarning("LoadSaveLeaderboard: file vuoto !!!");
                 return null;
             }
 
@@ -206,9 +212,9 @@ public class Leaderboard : MonoBehaviour
         Transform entryTransform = Instantiate(entryTemplate, container);
         RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
         entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);
-        
+
         entryTransform.gameObject.SetActive(true);
-        
+
         Transform pos = entryTransform.Find("background/posText");
         Transform time = entryTransform.Find("background/timeText");
         Transform name = entryTransform.Find("background/nameText");

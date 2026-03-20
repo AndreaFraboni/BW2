@@ -12,7 +12,7 @@ public class LifeUI : MonoBehaviour
 //        if (_lifeController == null) _lifeController = FindObjectOfType<LifeController>();
         if (_lifeController == null) _lifeController = PlayerManager.Instance.GetCurrentLifeController();
 
-        Debug.Log("mi attivo e mi registro per onLifechanged !!");
+        //Debug.Log("mi attivo e mi registro per onLifechanged !!");
         _lifeController._onHealthChange += UpdateLifeText;
 
         UpdateLifeText(_lifeController.currentHealth, _lifeController.maxHealth); // forzo lettura e aggiornamento UI del numero di vite attuale
@@ -25,7 +25,7 @@ public class LifeUI : MonoBehaviour
 
     private void UpdateLifeText(int lifeNum,int maxhealth)
     {
-        Debug.Log("SETTO NUMERO VITE !!");
+        //Debug.Log("SETTO NUMERO VITE !!");
         _currenLifeText.text = lifeNum.ToString();
     }
 
