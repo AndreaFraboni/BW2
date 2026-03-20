@@ -20,14 +20,14 @@ public class PickUp : MonoBehaviour , IPickable
 
     private void Start()
     {
-        _position = transform.position;
+        _position = transform.localPosition;
     }
 
     private void Update()
     {
         transform.Rotate(Vector3.up, _rotationSpeed * Time.deltaTime);
         float offsetY = Mathf.Sin(Time.time * _altitudeSpeed) * _altitude;
-        transform.position = _position + Vector3.up * offsetY;
+        transform.localPosition = _position + Vector3.up * offsetY;
     }
 
     public void Pick()
