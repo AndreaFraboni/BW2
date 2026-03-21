@@ -22,7 +22,7 @@ public class Leaderboard : MonoBehaviour
     public Transform entryContainer;
     public Transform entryTemplate;
     public int maxrank = 10;
-
+    [SerializeField] private GameObject _messageBanner;
 
     private string saveFilePath;
 
@@ -84,6 +84,7 @@ public class Leaderboard : MonoBehaviour
         if (highscores == null || highscores.highscoreEntryList == null || highscores.highscoreEntryList.Count == 0)
         {
             Debug.LogWarning("TABELLA DEI PUNTEGGI VUOTA !!!!");
+            _messageBanner.SetActive(true);
             // highscores = CreateDefaultHighscores();
             // SaveHighscoresToFile(highscores);
         }
@@ -238,6 +239,12 @@ public class Leaderboard : MonoBehaviour
         }
 
         transformList.Add(entryTransform);
+    }
+
+
+    public void HideMessageBanner()
+    {
+        if (_messageBanner)_messageBanner.SetActive(false);
     }
 
 }
