@@ -12,6 +12,8 @@ public class Leaderboard : MonoBehaviour
         public int time;
         public string name;
     }
+
+    [System.Serializable]
     private class Highscores
     {
         public List<HighscoreEntry> highscoreEntryList;
@@ -36,35 +38,7 @@ public class Leaderboard : MonoBehaviour
         }
 
         LoadSaveLeaderboard();
-
-        //CreateTestLeaderboard();
     }
-
-    //public void CreateTestLeaderboard()
-    //{
-    //    Highscores highscores = new Highscores();
-    //    highscores.highscoreEntryList = new List<HighscoreEntry>()
-    //    {
-    //        new HighscoreEntry { time = 500, name = "Andrea" },
-    //        new HighscoreEntry { time = 300, name = "Marco" },
-    //        new HighscoreEntry { time = 100, name = "Luca" },
-    //        new HighscoreEntry { time = 50, name = "Giulia" },
-    //        new HighscoreEntry { time = 20, name = "Sara" },
-    //        new HighscoreEntry { time = 200, name = "Paolo" },
-    //        new HighscoreEntry { time = 150, name = "Anna" },
-    //        new HighscoreEntry { time = 120, name = "Franco" },
-    //        new HighscoreEntry { time = 100, name = "Elena" },
-    //        new HighscoreEntry { time = 1000, name = "Michele" },
-    //        new HighscoreEntry { time = 800, name = "Tizio" },
-    //        new HighscoreEntry { time = 80, name = "Caio" },
-    //        new HighscoreEntry { time = 10, name = "Sempronio" },
-    //        new HighscoreEntry { time = 100, name = "Giovannino" }
-    //    };
-
-    //    SaveHighscoresToFile(highscores);        
-    //    LoadSaveLeaderboard();
-    //    Debug.Log("Leaderboard di prova creata.");
-    //}
 
     private void ClearLeaderboardUI()
     {
@@ -84,9 +58,7 @@ public class Leaderboard : MonoBehaviour
         if (highscores == null || highscores.highscoreEntryList == null || highscores.highscoreEntryList.Count == 0)
         {
             Debug.LogWarning("TABELLA DEI PUNTEGGI VUOTA !!!!");
-            _messageBanner.SetActive(true);
-            // highscores = CreateDefaultHighscores();
-            // SaveHighscoresToFile(highscores);
+            if (_messageBanner != null) _messageBanner.SetActive(true);
         }
         else
         {
@@ -108,25 +80,27 @@ public class Leaderboard : MonoBehaviour
 
         if (highscores == null || highscores.highscoreEntryList == null)
         {
-            //highscores = CreateDefaultHighscores();
-        }
-        else
-        {
-            HighscoreEntry newEntry = new HighscoreEntry
+            highscores = new Highscores
             {
-                time = time,
-                name = playerName
+                highscoreEntryList = new List<HighscoreEntry>()
             };
-
-            highscores.highscoreEntryList.Add(newEntry);
-
-            SortHighscores(highscores.highscoreEntryList);
-            SaveHighscoresToFile(highscores);
-            LoadSaveLeaderboard();
-
-            Debug.Log("Nuovo punteggio aggiunto: " + playerName + " - " + time);
         }
+
+        HighscoreEntry newEntry = new HighscoreEntry
+        {
+            time = time,
+            name = playerName
+        };
+
+        highscores.highscoreEntryList.Add(newEntry);
+
+        SortHighscores(highscores.highscoreEntryList);
+        SaveHighscoresToFile(highscores);
+        LoadSaveLeaderboard();
+
+        Debug.Log("Nuovo punteggio aggiunto: " + playerName + " - " + time);
     }
+
 
     private Highscores LoadHighscoresFromFile()
     {
@@ -177,16 +151,6 @@ public class Leaderboard : MonoBehaviour
         }
     }
 
-    private Highscores CreateDefaultHighscores()
-    {
-        Highscores highscores = new Highscores();
-        highscores.highscoreEntryList = new List<HighscoreEntry>()
-        {
-            new HighscoreEntry { time = 0, name = "Player" }
-        };
-        return highscores;
-    }
-
     private void SortHighscores(List<HighscoreEntry> list)
     {
         for (int i = 0; i < list.Count; i++)
@@ -219,7 +183,13 @@ public class Leaderboard : MonoBehaviour
         Transform pos = entryTransform.Find("background/posText");
         Transform time = entryTransform.Find("background/timeText");
         Transform name = entryTransform.Find("background/nameText");
-        Transform background = entryTransform.Find("background");
+        //Transform background = entryTransform.Find("background");
+
+        if (pos == null || time == null || name == null)
+        {
+            Debug.LogError("Riferimenti UI mancanti nel prefab della leaderboard !!!!");
+            return;
+        }
 
         TMP_Text posText = pos.GetComponent<TMP_Text>();
         TMP_Text timeText = time.GetComponent<TMP_Text>();
@@ -244,7 +214,7 @@ public class Leaderboard : MonoBehaviour
 
     public void HideMessageBanner()
     {
-        if (_messageBanner)_messageBanner.SetActive(false);
+        if (_messageBanner != null) _messageBanner.SetActive(false);
     }
 
 }
