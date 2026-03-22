@@ -26,11 +26,11 @@ public class Leaderboard : MonoBehaviour
     public int maxrank = 10;
     [SerializeField] private GameObject _messageBanner;
 
-    private string saveFilePath;
+    private string _saveRankingFilePath;
 
     private void Awake()
     {
-        saveFilePath = Path.Combine(Application.persistentDataPath, "LeaderboardData.json");
+        _saveRankingFilePath = Path.Combine(Application.persistentDataPath, "ranking.json");
 
         if (entryTemplate != null)
         {
@@ -104,7 +104,7 @@ public class Leaderboard : MonoBehaviour
 
     private Highscores LoadHighscoresFromFile()
     {
-        if (!File.Exists(saveFilePath))
+        if (!File.Exists(_saveRankingFilePath))
         {
             Debug.Log("LoadSaveLeaderboard: il file non esiste !!!");
             return null;
@@ -112,7 +112,7 @@ public class Leaderboard : MonoBehaviour
 
         try
         {
-            string json = File.ReadAllText(saveFilePath);
+            string json = File.ReadAllText(_saveRankingFilePath);
 
             if (string.IsNullOrWhiteSpace(json))
             {
@@ -142,8 +142,8 @@ public class Leaderboard : MonoBehaviour
         try
         {
             string json = JsonUtility.ToJson(highscores, true);
-            File.WriteAllText(saveFilePath, json);
-            Debug.Log("Leaderboard salvata in: " + saveFilePath);
+            File.WriteAllText(_saveRankingFilePath, json);
+            Debug.Log("Leaderboard salvata in: " + _saveRankingFilePath);
         }
         catch (System.Exception e)
         {

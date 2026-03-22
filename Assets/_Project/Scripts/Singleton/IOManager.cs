@@ -51,11 +51,14 @@ public class IOManager : GenericSingleton<IOManager>
 
     private string _savePlayerFile;
     private string _saveAudioSettingsFile;
+    private string _saveRankingFilePath;
 
     private void Start()
     {
         _savePlayerFile = Application.persistentDataPath + "/GameData.json";
         _saveAudioSettingsFile = Application.persistentDataPath + "/audiosettings.json";
+        _saveRankingFilePath = Path.Combine(Application.persistentDataPath, "ranking.json");
+
     }
 
     public void SetPlayerName(string name)
@@ -217,11 +220,9 @@ public class IOManager : GenericSingleton<IOManager>
     //*********************************************************************************************//
     public void AddHighscoreEntry(int Time, string Name)
     {
-        string saveFilePath = Path.Combine(Application.persistentDataPath, "LeaderboardData.json");
-
         HighscoreEntry highscoreEntry = new HighscoreEntry { time = Time, name = Name }; // Nuovo punteggio da salvare .....
 
-        if (!File.Exists(saveFilePath))
+        if (!File.Exists(_saveRankingFilePath))
         {
             // Il file non esiste, creiamo un nuovo file con una lista vuota
             Debug.Log("File Leaderboard non esistente, ne creo uno nuovo.");
@@ -230,12 +231,12 @@ public class IOManager : GenericSingleton<IOManager>
             highscores.highscoreEntryList.Add(highscoreEntry); // Aggiungi il nuovo punteggio
 
             string json = JsonUtility.ToJson(highscores, true);
-            File.WriteAllText(saveFilePath, json);
-            Debug.Log("Leaderboard creata e salvata in: " + saveFilePath);
+            File.WriteAllText(_saveRankingFilePath, json);
+            Debug.Log("Leaderboard creata e salvata in: " + _saveRankingFilePath);
         }
         else
         {
-            string json = File.ReadAllText(saveFilePath);
+            string json = File.ReadAllText(_saveRankingFilePath);
             Highscores highscores = JsonUtility.FromJson<Highscores>(json);
 
             if (highscores == null)
@@ -252,8 +253,8 @@ public class IOManager : GenericSingleton<IOManager>
 
             // Save updated Highscores     
             json = JsonUtility.ToJson(highscores,true);
-            File.WriteAllText(saveFilePath, json);
-            Debug.Log("Leaderboard salvata in: " + saveFilePath);
+            File.WriteAllText(_saveRankingFilePath, json);
+            Debug.Log("Leaderboard salvata in: " + _saveRankingFilePath);
         }
     }   
     
